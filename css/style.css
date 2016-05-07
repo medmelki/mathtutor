@@ -1,0 +1,242 @@
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.bar-top {
+    position: fixed;
+    box-shadow: 0 3px rgba(0, 0, 0, .3);
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 80px;
+    -webkit-font-smoothing: antialiased;
+    display: block;
+}
+
+.bar-top ul {
+    float: left;
+    padding: 10px;
+    color: black !important;
+}
+
+.bar-top ul button {
+    margin-left: 10px;
+}
+
+#board {
+    height: 100%;
+    background: url("../img/grid.png") repeat;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#canvas {
+    opacity: 0.4;
+    background: url("../img/grid.png") repeat;
+}
+
+#keyboard {
+    margin-left: -15px;
+    position: fixed;
+    bottom: 5px;
+    width: 100%;
+    height: initial;
+    background: #d5d9dc repeat-x;
+    -moz-border-radius-topleft: 7px 21px;
+    -moz-border-radius-topright: 7px 21px;
+    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    padding: 10px 0 10px 4%;
+    -webkit-box-shadow: inset 0 0 8px #bbb, 0 1px 0 #aaa, 0 4px 0 #bbb, 0 10px 30px #ddd;
+    -moz-box-shadow: inset 0 0 8px #bbb, 0 1px 0 #aaa, 0 4px 0 #bbb, 0 10px 30px #ddd;
+    box-shadow: inset 0 0 8px #bbb, 0 1px 0 #aaa, 0 4px 0 #bbb, 0 10px 30px #ddd;
+}
+
+#keyboard ul {
+    list-style-type: none;
+    margin: 0 auto;
+}
+
+#keyboard li {
+    float: left;
+}
+
+#keyboard .key {
+    display: block;
+    color: black;
+    font: bold 15pt arial;
+    text-decoration: none;
+    text-align: center;
+    line-height: 41px;
+    width: 74px;
+    height: 60px;
+    margin: 5px 5px 5px 15px;
+    background: white;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border-top: 1px solid #f5f5f5;
+    -webkit-box-shadow: inset 0 0 25px #e8e8e8,
+    0 1px 0 #c3c3c3,
+    0 2px 0 #c9c9c9,
+    0 2px 3px #333;
+    -moz-box-shadow: inset 0 0 25px #e8e8e8,
+    0 1px 0 #c3c3c3,
+    0 2px 0 #c9c9c9,
+    0 2px 3px #333;
+    box-shadow: inset 0 0 25px #e8e8e8,
+    0 1px 0 #c3c3c3,
+    0 2px 0 #c9c9c9,
+    0 2px 3px #333;
+    text-shadow: 0px 1px 0px #f5f5f5;
+}
+
+.key-special span {
+    margin-top: 2px !important;
+    margin-left: 2px !important;
+}
+
+.key-red {
+    width: 110px!important;
+}
+
+#keyboard .key:active, .keydown {
+    color: #000;
+    background: #ebeced;
+    margin: 7px 5px 3px 15px;
+    -webkit-box-shadow: inset 0 0 25px #ddd,
+    0 0 3px #333;
+    -moz-box-shadow: inset 0 0 25px #ddd,
+    0 0 3px #333;
+    box-shadow: inset 0 0 25px #ddd,
+    0 0 3px #333;
+    border-top: 1px solid #eee;
+}
+
+#esc {
+    margin: 6px 15px 0 0;
+    font-size: 7.5pt;
+    text-transform: lowercase;
+}
+
+.qwerty li a span {
+    display: block;
+    margin: 13px 0 0;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.qwerty li #tab span {
+    text-align: left;
+    margin: 23px 0 0 10px;
+    font-size: 7.5pt;
+    text-transform: lowercase;
+}
+
+.qwerty li .alt b {
+    display: block;
+    margin: 3px 0 0;
+}
+
+.qwerty li .alt span {
+    margin: 2px 0 0;
+}
+
+#keyboard ul ol {
+    list-style-type: none;
+}
+
+#keyboard h1 {
+    color: #888;
+    text-align: center;
+    font: bold 25pt/25pt arial;
+    margin: 30px 0 60px;
+}
+
+#keyboard h2 {
+    color: #666;
+    font: 13pt/0pt arial;
+}
+
+#keyboard p {
+    color: #999;
+    font: 9pt/17pt arial;
+    margin: 0 0 50px;
+}
+
+#keyboard small {
+    font: italic 8pt/12pt arial;
+    color: #aaa;
+    padding: 0 130px 0 0;
+    display: block;
+}
+
+#keyboard cite {
+    display: block;
+    padding: 0 0 30px;
+    margin: 0 auto;
+    text-align: center;
+    color: #999;
+    font: italic bold 8pt arial;
+}
+
+#keyboard ul, ol {
+    padding: 0px;
+    margin: 0;
+}
+
+/* For modern browsers */
+.cf:before, .cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+    zoom: 1;
+}
+
+#calculator .key {
+    background: url('../img/calculator2.png');
+    background-size: 70px 88px;
+    height: 92px !important;
+    width: 74px !important;
+    position: absolute;
+    left: 715px;
+    top: 30px;
+    box-shadow: none;
+    border-style: groove;
+    border-width: 2px;
+    border-color: white;
+    padding: 20px;
+}
+
+#alphabet .key {
+    color: black;
+    font-weight: bold;
+    height: 81px !important;
+    width: 81px !important;
+    position: absolute;
+    left: 715px;
+    top: 140px;
+    box-shadow: none;
+    border-style: groove;
+    border-width: 2px;
+    border-color: white;
+    padding: 20px;
+}
+
+/*#calculator {*/
+/*background: url('../img/calculator.png');*/
+/*}*/

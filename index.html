@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MathTutor (TEST)</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">
+    <!--<script type="text/javascript" src="js/keyboard.js"></script>-->
+    <script type="text/javascript" async
+            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/bootstrap.min.js"></script>
+    <script src="js/plugins/quickplot.min.js"></script>
+    <script src="js/plugins/angular.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controller/keyboard.js"></script>
+</head>
+<body>
+<nav class="bar-top">
+    <ul class="row col-md-12">
+        <div class="col-md-3" role="group" aria-label="...">
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip" title="HOME">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip" title="Calculator"><span
+                    class="icon-calculator-1" data-target="#calcModal" data-toggle="modal"
+                    aria-hidden="true"></span></button>
+            <button id="keyboard_icon" type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Keyboard"><span
+                    class="icon-keyboard"
+                    aria-hidden="true"></span></button>
+        </div>
+        <div class="col-md-9" role="group" aria-label="...">
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip" title="New page">
+                <span class="glyphicon glyphicon-file" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip" title="Open"><span
+                    class="icon-folder-open"
+                    aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Save"><span
+                    class="icon-floppy-disk"
+                    aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Save As"><span
+                    class="icon-floppy-disk"
+                    aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Cut"><span class="glyphicon glyphicon-scissors"
+                                      aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Copy"><span class="icon-copy"
+                                       aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Select"><span
+                    class="glyphicon glyphicon-hand-up"
+                    aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Paste"><span
+                    class="icon-paste"
+                    aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Undo"><span class="icon-undo2"
+                                       aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Redo"><span class="icon-redo2"
+                                       aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default btn-lg btn-top-bar" data-toggle="tooltip"
+                    title="Print"><span class="icon-printer"
+                                        aria-hidden="true"></span></button>
+        </div>
+    </ul>
+</nav>
+<br>
+<br>
+<br>
+
+<div id="board" class="container">
+    <div class="row">
+        <h2>First Mathematics Exercice</h2>
+
+        <p>This is just a quick and dirty example.</p>
+    </div>
+    <p>When `a != 0`, there are two solutions to `ax^2 + bx + c = 0` and
+        they are</p>
+
+    <p>
+        `x = (-b +- sqrt(b^2-4ac))/(2a)`
+    </p>
+
+    <div id="keyboard">
+        <ul class="cf qwerty">
+            <li><a class="key"><span>0</span></a></li>
+            <li><a class="key"><span>1</span></a></li>
+            <li><a class="key"><span>2</span></a></li>
+            <li><a class="key"><span>3</span></a></li>
+            <li><a class="key"><span>4</span></a></li>
+            <li><a class="key"><span>5</span></a></li>
+            <li><a class="key"><span>6</span></a></li>
+            <li><a class="key"><span>7</span></a></li>
+            <li><a class="key"><span>8</span></a></li>
+            <li><a class="key"><span>9</span></a></li>
+            <li><a class="key" style="background: url('img/keys/remainder.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key key-red" style="background: url('img/keys/return.jpg');background-size: 110px 60px;"></a></li>
+        </ul>
+        <ul class="cf qwerty">
+            <li><a class="key"><span>+</span></a></li>
+            <li><a class="key"><span>-</span></a></li>
+            <li><a class="key"><span>x</span></a></li>
+            <li><a class="key" style="background: url('img/keys/divided%20by.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key" style="background: url('img/keys/fraction.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key"><span>=</span></a></li>
+            <li><a class="key"><span>&ne;</span></a></li>
+            <li><a class="key"><span>.</span></a></li>
+            <li><a class="key key-special" style="background: url('img/keys/plus%20or%20minus.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key key-special" style="background: url('img/keys/repeater%20decimal.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key"><span>:</span></a></li>
+            <li><a class="key key-red" style="background: url('img/keys/space%20bar.jpg');background-size: 110px 60px;"></a></li>
+        </ul>
+        <ul class="cf qwerty">
+            <li><a class="key"><span><</span></a></li>
+            <li><a class="key"><span>></span></a></li>
+            <li><a class="key"><span>&#8818;</span></a></li>
+            <li><a class="key"><span>&#8819;</span></a></li>
+            <li><a class="key" style="background: url('img/keys/index.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key" style="background: url('img/keys/square%20root.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key" style="background: url('img/keys/pi.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key key-special" style="background: url('img/keys/add ten.png');background-size: 80px 60px;"></a></li>
+            <li><a class="key key-special" style="background: url('img/keys/subtract%20ten.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key key-special" style="background: url('img/keys/degrees.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key"><span>|</span></a></li>
+            <li><a class="key key-red" style="background: url('img/keys/delete%20backspace.jpg');background-size: 110px 60px;"></a></li>
+        </ul>
+        <ul class="cf qwerty">
+            <li><a class="key" style="background: url('img/keys/x.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key" style="background: url('img/keys/y.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key"><span>{</span></a></li>
+            <li><a class="key"><span>}</span></a></li>
+            <li><a class="key" style="background: url('img/keys/numbered%20article.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key" style="background: url('img/keys/root%20index.jpg');background-size: 80px 60px;"></a></li>
+            <li><a class="key"><span>(</span></a></li>
+            <li><a class="key"><span>)</span></a></li>
+            <li><a class="key"><span>[</span></a></li>
+            <li><a class="key"><span>]</span></a></li>
+            <li><a class="key"><span>%</span></a></li>
+            <li><a class="key"><span>$</span></a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Calculator Modal-->
+<div class="modal fade" id="calcModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background: rgb(250, 250, 250)">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Calculator</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+</html>
