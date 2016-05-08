@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style2.css">
-    <!--<script type="text/javascript" src="js/keyboard.js"></script>-->
+    <link rel="stylesheet" href="css/board-style.css">
     <script type="text/javascript" async
             src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
@@ -14,11 +14,13 @@
     <script src="js/plugins/bootstrap.min.js"></script>
     <script src="js/plugins/quickplot.min.js"></script>
     <script src="js/plugins/angular.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/draw.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controller/keyboard.js"></script>
+    <script src="js/controller/board.js"></script>
+    <script src="js/script.js"></script>
 </head>
-<body>
+<body ng-app="myApp">
 <nav class="bar-top">
     <ul class="row col-md-12">
         <div class="col-md-3" role="group" aria-label="...">
@@ -76,77 +78,65 @@
 <br>
 <br>
 
-<div id="board" class="container">
-    <div class="row">
-        <h2>First Mathematics Exercice</h2>
-
-        <p>This is just a quick and dirty example.</p>
-    </div>
-    <p>When `a != 0`, there are two solutions to `ax^2 + bx + c = 0` and
-        they are</p>
-
-    <p>
-        `x = (-b +- sqrt(b^2-4ac))/(2a)`
-    </p>
-
-    <div id="keyboard">
-        <ul class="cf qwerty">
-            <li><a class="key"><span>0</span></a></li>
-            <li><a class="key"><span>1</span></a></li>
-            <li><a class="key"><span>2</span></a></li>
-            <li><a class="key"><span>3</span></a></li>
-            <li><a class="key"><span>4</span></a></li>
-            <li><a class="key"><span>5</span></a></li>
-            <li><a class="key"><span>6</span></a></li>
-            <li><a class="key"><span>7</span></a></li>
-            <li><a class="key"><span>8</span></a></li>
-            <li><a class="key"><span>9</span></a></li>
-            <li><a class="key" style="background: url('img/keys/remainder.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key key-red" style="background: url('img/keys/return.jpg');background-size: 110px 60px;"></a></li>
-        </ul>
-        <ul class="cf qwerty">
-            <li><a class="key"><span>+</span></a></li>
-            <li><a class="key"><span>-</span></a></li>
-            <li><a class="key"><span>x</span></a></li>
-            <li><a class="key" style="background: url('img/keys/divided%20by.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key" style="background: url('img/keys/fraction.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key"><span>=</span></a></li>
-            <li><a class="key"><span>&ne;</span></a></li>
-            <li><a class="key"><span>.</span></a></li>
-            <li><a class="key key-special" style="background: url('img/keys/plus%20or%20minus.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key key-special" style="background: url('img/keys/repeater%20decimal.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key"><span>:</span></a></li>
-            <li><a class="key key-red" style="background: url('img/keys/space%20bar.jpg');background-size: 110px 60px;"></a></li>
-        </ul>
-        <ul class="cf qwerty">
-            <li><a class="key"><span><</span></a></li>
-            <li><a class="key"><span>></span></a></li>
-            <li><a class="key"><span>&#8818;</span></a></li>
-            <li><a class="key"><span>&#8819;</span></a></li>
-            <li><a class="key" style="background: url('img/keys/index.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key" style="background: url('img/keys/square%20root.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key" style="background: url('img/keys/pi.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key key-special" style="background: url('img/keys/add ten.png');background-size: 80px 60px;"></a></li>
-            <li><a class="key key-special" style="background: url('img/keys/subtract%20ten.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key key-special" style="background: url('img/keys/degrees.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key"><span>|</span></a></li>
-            <li><a class="key key-red" style="background: url('img/keys/delete%20backspace.jpg');background-size: 110px 60px;"></a></li>
-        </ul>
-        <ul class="cf qwerty">
-            <li><a class="key" style="background: url('img/keys/x.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key" style="background: url('img/keys/y.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key"><span>{</span></a></li>
-            <li><a class="key"><span>}</span></a></li>
-            <li><a class="key" style="background: url('img/keys/numbered%20article.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key" style="background: url('img/keys/root%20index.jpg');background-size: 80px 60px;"></a></li>
-            <li><a class="key"><span>(</span></a></li>
-            <li><a class="key"><span>)</span></a></li>
-            <li><a class="key"><span>[</span></a></li>
-            <li><a class="key"><span>]</span></a></li>
-            <li><a class="key"><span>%</span></a></li>
-            <li><a class="key"><span>$</span></a></li>
-        </ul>
-    </div>
+<div id="board" ng-controller="BoardController as board">
+</div>
+<div id="keyboard">
+    <ul class="cf qwerty">
+        <li><a class="key"><span>0</span></a></li>
+        <li><a class="key"><span>1</span></a></li>
+        <li><a class="key"><span>2</span></a></li>
+        <li><a class="key"><span>3</span></a></li>
+        <li><a class="key"><span>4</span></a></li>
+        <li><a class="key"><span>5</span></a></li>
+        <li><a class="key"><span>6</span></a></li>
+        <li><a class="key"><span>7</span></a></li>
+        <li><a class="key"><span>8</span></a></li>
+        <li><a class="key"><span>9</span></a></li>
+        <li><a class="key" style="background: url('img/keys/remainder.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key key-red" style="background: url('img/keys/return.jpg');background-size: 110px 60px;"></a></li>
+    </ul>
+    <ul class="cf qwerty">
+        <li><a class="key"><span>+</span></a></li>
+        <li><a class="key"><span>-</span></a></li>
+        <li><a class="key"><span>x</span></a></li>
+        <li><a class="key" style="background: url('img/keys/divided%20by.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key" style="background: url('img/keys/fraction.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key"><span>=</span></a></li>
+        <li><a class="key"><span>&ne;</span></a></li>
+        <li><a class="key"><span>.</span></a></li>
+        <li><a class="key key-special" style="background: url('img/keys/plus%20or%20minus.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key key-special" style="background: url('img/keys/repeater%20decimal.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key"><span>:</span></a></li>
+        <li><a class="key key-red" style="background: url('img/keys/space%20bar.jpg');background-size: 110px 60px;"></a></li>
+    </ul>
+    <ul class="cf qwerty">
+        <li><a class="key"><span><</span></a></li>
+        <li><a class="key"><span>></span></a></li>
+        <li><a class="key"><span>&#8818;</span></a></li>
+        <li><a class="key"><span>&#8819;</span></a></li>
+        <li><a class="key" style="background: url('img/keys/index.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key" style="background: url('img/keys/square%20root.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key" style="background: url('img/keys/pi.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key key-special" style="background: url('img/keys/add ten.png');background-size: 80px 60px;"></a></li>
+        <li><a class="key key-special" style="background: url('img/keys/subtract%20ten.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key key-special" style="background: url('img/keys/degrees.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key"><span>|</span></a></li>
+        <li><a class="key key-red" style="background: url('img/keys/delete%20backspace.jpg');background-size: 110px 60px;"></a></li>
+    </ul>
+    <ul class="cf qwerty">
+        <li><a class="key" style="background: url('img/keys/x.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key" style="background: url('img/keys/y.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key"><span>{</span></a></li>
+        <li><a class="key"><span>}</span></a></li>
+        <li><a class="key" style="background: url('img/keys/numbered%20article.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key" style="background: url('img/keys/root%20index.jpg');background-size: 80px 60px;"></a></li>
+        <li><a class="key"><span>(</span></a></li>
+        <li><a class="key"><span>)</span></a></li>
+        <li><a class="key"><span>[</span></a></li>
+        <li><a class="key"><span>]</span></a></li>
+        <li><a class="key"><span>%</span></a></li>
+        <li><a class="key"><span>$</span></a></li>
+    </ul>
 </div>
 
 <!-- Calculator Modal-->
@@ -163,7 +153,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                <button type="button" id="submit-button" class="btn btn-primary" data-dismiss="modal">Submit</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
