@@ -44,32 +44,56 @@ body {
     background: url("../img/grid.png") repeat;
 }
 
-#keyboard {
+.keyboard {
     position: fixed;
-    bottom: 5px;
-    width: 100%;
     height: initial;
     background: #d5d9dc repeat-x;
     -moz-border-radius-topleft: 7px 21px;
     -moz-border-radius-topright: 7px 21px;
     -moz-border-radius-bottomright: 10px;
     -moz-border-radius-bottomleft: 10px;
-    padding: 10px 0 10px 4%;
     -webkit-box-shadow: inset 0 0 8px #bbb, 0 1px 0 #aaa, 0 4px 0 #bbb, 0 10px 30px #ddd;
     -moz-box-shadow: inset 0 0 8px #bbb, 0 1px 0 #aaa, 0 4px 0 #bbb, 0 10px 30px #ddd;
     box-shadow: inset 0 0 8px #bbb, 0 1px 0 #aaa, 0 4px 0 #bbb, 0 10px 30px #ddd;
 }
 
-#keyboard ul {
+.keyboard-left {
+    position: fixed;
+    top: 80px;
+    bottom: 5px;
+    width: 17%;
+}
+
+.keyboard-right {
+    position: fixed;
+    top: 80px;
+    bottom: 5px;
+    right: 0;
+    width: 17%;
+}
+
+#toolbar-bottom {
+    position: fixed;
+    background: #800100;
+    width: 93%;
+    height: 7px;
+    bottom: 1px;
+}
+
+#toolbar-bottom:hover + .keyboard {
+    display: block;
+}
+
+.keyboard ul {
     list-style-type: none;
     margin: 0 auto;
 }
 
-#keyboard li {
+.keyboard li {
     float: left;
 }
 
-#keyboard .key {
+.keyboard .key {
     display: block;
     color: black;
     font: bold 15pt arial;
@@ -104,10 +128,10 @@ body {
 }
 
 .key-red {
-    width: 110px!important;
+    width: 110px !important;
 }
 
-#keyboard .key:active, .keydown {
+.keyboard .key:active, .keydown {
     color: #000;
     background: #ebeced;
     margin: 7px 5px 3px 15px;
@@ -150,36 +174,36 @@ body {
     margin: 2px 0 0;
 }
 
-#keyboard ul ol {
+.keyboard ul ol {
     list-style-type: none;
 }
 
-#keyboard h1 {
+.keyboard h1 {
     color: #888;
     text-align: center;
     font: bold 25pt/25pt arial;
     margin: 30px 0 60px;
 }
 
-#keyboard h2 {
+.keyboard h2 {
     color: #666;
     font: 13pt/0pt arial;
 }
 
-#keyboard p {
+.keyboard p {
     color: #999;
     font: 9pt/17pt arial;
     margin: 0 0 50px;
 }
 
-#keyboard small {
+.keyboard small {
     font: italic 8pt/12pt arial;
     color: #aaa;
     padding: 0 130px 0 0;
     display: block;
 }
 
-#keyboard cite {
+.keyboard cite {
     display: block;
     padding: 0 0 30px;
     margin: 0 auto;
@@ -188,7 +212,7 @@ body {
     font: italic bold 8pt arial;
 }
 
-#keyboard ul, ol {
+.keyboard ul, ol {
     padding: 0px;
     margin: 0;
 }
@@ -243,7 +267,7 @@ body {
     border-color: rgb(106, 1, 0);
 }
 
-#submit-button:hover  {
+#submit-button:hover {
     background-color: rgb(137, 1, 0);
     border-color: rgb(67, 1, 0);
 }

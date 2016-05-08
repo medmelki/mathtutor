@@ -1,7 +1,17 @@
 var keyboard_shown;
 
 $(document).ready(function () {
-    $('#keyboard').hide();
+    //$('#keyboard').hide();
+
+    //('#toolbar-bottom').hover(
+    //    function () {
+    //        $('.keyboard')[1].fadeIn();
+    //    },
+    //    function () {
+    //        $('.keyboard')[1].fadeOut();
+    //    }
+    //);
+
     $('#keyboard_icon').click(function () {
 
         if (keyboard_shown) {
