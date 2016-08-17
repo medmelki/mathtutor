@@ -1,6 +1,9 @@
 
 $(document).ready(function () {
 
+    drawGrill();
+});
+function drawGrill() {
     var board = $('#board');
 
     var board_width = board.width();
@@ -13,4 +16,4 @@ $(document).ready(function () {
             board.append(cell);
         }
     }
-});
+}
