@@ -101,9 +101,9 @@ body {
     text-decoration: none;
     text-align: center;
     line-height: 41px;
-    width: 63px;
-    height: 56px;
-    margin: 3px 0px 0px 17px;
+    width: 62px;
+    height: 50px;
+    margin: 2px 0px 0px 12px;
     background: white;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -261,4 +261,8 @@ body {
 #submit-button:hover {
     background-color: rgb(137, 1, 0);
     border-color: rgb(67, 1, 0);
+}
+
+.bar-top ul button {
+    margin-left: 5px !important;
 }
