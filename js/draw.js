@@ -5,12 +5,18 @@ $(document).ready(function () {
 
     drawGrid();
     flagCurrentGridElement();
+
+    $(window).resize(function () {
+        drawGrid();
+    });
 });
 
 function drawGrid() {
 
     var grid = $('#grid');
     var board = $('div.keyboard');
+
+    grid.empty();
 
     const TOP_NAV_HEIGHT = 78;
 
