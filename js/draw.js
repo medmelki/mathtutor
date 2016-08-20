@@ -4,11 +4,10 @@ var selectedCell;
 $(document).ready(function () {
 
     drawGrid();
-    flagCurrentGridElement();
+    flagCurrentCell();
 
-    $(window).resize(function () {
-        drawGrid();
-    });
+    copyKeyToSelectedCell();
+
 });
 
 function drawGrid() {
@@ -30,9 +29,13 @@ function drawGrid() {
             grid.append(cell);
         }
     }
+
+    $(window).resize(function () {
+        drawGrid();
+    });
 }
 
-function flagCurrentGridElement() {
+function flagCurrentCell() {
 
     $("#grid td.cell").each(function () {
         $(this).click(function () {
@@ -44,4 +47,12 @@ function flagCurrentGridElement() {
         });
     });
 
+}
+
+function copyKeyToSelectedCell() {
+    $('ul.qwerty li a').click(function () {
+        if (selectedCell) {
+            $(selectedCell).html($(this).clone().addClass("key-cloned"));
+        }
+    });
 }

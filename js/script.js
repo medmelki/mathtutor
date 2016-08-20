@@ -38,5 +38,5 @@ function toggleAlphabeticKeyboard() {
         }
     }
 
-
+    copyKeyToSelectedCell();
 }
