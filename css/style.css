@@ -143,8 +143,8 @@ body {
 
 .qwerty li a span {
     display: block;
-    margin: 13px 0 0;
-    line-height: 24px;
+    margin: 12px 0 0;
+    line-height: 16px;
     font-weight: bold;
     font-size: 50px;
 }
