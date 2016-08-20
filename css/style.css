@@ -33,11 +33,10 @@ body {
 }
 
 #board {
-    height: 100%;
-    /*background: url("../img/grid.png") repeat;*/
     width: 100%;
     margin-top: 25px;
     padding-left: 1px;
+    height: 100%;
 }
 
 #canvas {
@@ -265,4 +264,28 @@ body {
 
 .bar-top ul button {
     margin-left: 5px !important;
+}
+
+#global-grid {
+    float: left;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+}
+
+#global-grid div {
+    float: left;
+}
+
+#left-grid, #right-grid {
+    width: 166.4px;
+}
+
+#grid {
+    position: absolute;
+    width: 74%;
+    left: 166.4px;
+    /*margin-right: 166.4px;*/
+    margin-bottom: 2px;
+    margin-top: 2px;
 }
