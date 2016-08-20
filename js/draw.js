@@ -1,7 +1,12 @@
+var selectedCell;
+
+
 $(document).ready(function () {
 
     drawGrid();
+    flagCurrentGridElement();
 });
+
 function drawGrid() {
 
     var grid = $('#grid');
@@ -19,4 +24,18 @@ function drawGrid() {
             grid.append(cell);
         }
     }
+}
+
+function flagCurrentGridElement() {
+
+    $("#grid td.cell").each(function () {
+        $(this).click(function () {
+            $(this).addClass("cell-selected");
+            if (selectedCell && this !== selectedCell) {
+                $(selectedCell).removeClass("cell-selected");
+            }
+            selectedCell = this;
+        });
+    });
+
 }
