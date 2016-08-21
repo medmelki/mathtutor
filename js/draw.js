@@ -1,5 +1,8 @@
 var selectedCell;
 
+var columnsNumber = 0;
+var rowsNumber = 0;
+
 
 $(document).ready(function () {
 
@@ -25,16 +28,18 @@ function drawGrid() {
     var cell = "<td class='cell'></td>";
 
     for (let i = 0; i <= grid_height; i += 60) {
+        columnsNumber = 0;
         for (let j = 60; j <= grid_width; j += 60) {
             grid.append(cell);
+            columnsNumber++;
         }
+        rowsNumber++;
     }
 
     $(window).resize(function () {
         drawGrid();
     });
 }
-
 
 function addCellClickBehavior() {
     $("#grid td.cell").each(function () {
@@ -61,17 +66,41 @@ function deleteSelectedCell() {
         }
     }
 }
+
+function returnSelectedCell() {
+    if (selectedCell.nextAll("td.cell:eq(" + (columnsNumber - 1) + ")")) {
+        flagCell(selectedCell.nextAll("td.cell:eq(" + (columnsNumber - 1) + ")"));
+    }
+}
+
+function addSpaceCell() {
+    if (selectedCell.next("td.cell")) {
+        flagCell(selectedCell.next("td.cell"));
+    }
+}
 function addKeysClickBehavior() {
 
+    var specialKeys = ['#delete-key', '#return-key', '#space-key'];
     // all keys
     $('ul.qwerty li a').click(function () {
         copyKeyToSelectedCell(this);
     });
 
+    $.each(specialKeys, function (i, v) { // unbind click event
+        $(v).unbind("click");
+    });
+
     // delete key
-    $('#delete-key').unbind("click");
     $('#delete-key').click(function () {
         deleteSelectedCell();
+    });
+    // return key
+    $('#return-key').click(function () {
+        returnSelectedCell();
+    });
+    // space key
+    $('#space-key').click(function () {
+        addSpaceCell();
     });
 
 }
