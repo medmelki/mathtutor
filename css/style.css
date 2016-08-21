@@ -55,21 +55,17 @@ body {
     -webkit-box-shadow: inset 0 0 8px #bbb, 0 1px 0 #aaa, 0 4px 0 #bbb, 0 10px 30px #ddd;
     -moz-box-shadow: inset 0 0 8px #bbb, 0 1px 0 #aaa, 0 4px 0 #bbb, 0 10px 30px #ddd;
     box-shadow: inset 0 0 8px #bbb, 0 1px 0 #aaa, 0 4px 0 #bbb, 0 10px 30px #ddd;
+    position: fixed;
+    top: 80px;
+    bottom: 5px;
+    width: 13.5%;
 }
 
 .keyboard-left {
-    position: fixed;
-    top: 80px;
-    bottom: 5px;
-    width: 13%;
 }
 
 .keyboard-right {
-    position: fixed;
-    top: 80px;
-    bottom: 5px;
     right: 0;
-    width: 13%;
 }
 
 #toolbar-bottom {
@@ -101,7 +97,7 @@ body {
     text-align: center;
     width: 62px;
     height: 50px;
-    margin: 2px 0px 0px 12px;
+    margin: 2px 0px 0px 16px;
     background: white;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -291,14 +287,17 @@ a.key > span {
 }
 
 #left-grid, #right-grid {
-    width: 166.4px;
+    width: 175px;
 }
 
 #grid {
     position: absolute;
     width: 74%;
-    left: 166.4px;
-    /*margin-right: 166.4px;*/
+    left: 175px;
     margin-bottom: 2px;
     margin-top: 2px;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

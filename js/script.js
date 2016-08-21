@@ -3,6 +3,8 @@ $(document).ready(function () {
     $('#keyboard_icon').click(function () {
         toggleAlphabeticKeyboard();
     });
+    $('#keyboard_icon').click(function () {
+    });
 
     //drawGraph();
 });
