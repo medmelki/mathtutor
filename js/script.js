@@ -40,7 +40,10 @@ function toggleAlphabeticKeyboard() {
         }
     }
 
-    copyKeyToSelectedCell();
+    $("ul.qwerty li a").click(function () {
+        copyKeyToSelectedCell(this);
+    });
+
 }
 
 function addScrollButtonsBehavior() {
