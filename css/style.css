@@ -39,11 +39,6 @@ body {
     height: 100%;
 }
 
-#canvas {
-    opacity: 0.4;
-    background: url("../img/grid.png") repeat;
-}
-
 .keyboard {
     position: fixed;
     height: initial;
@@ -66,18 +61,6 @@ body {
 
 .keyboard-right {
     right: 0;
-}
-
-#toolbar-bottom {
-    position: fixed;
-    background: #800100;
-    width: 93%;
-    height: 7px;
-    bottom: 1px;
-}
-
-#toolbar-bottom:hover + .keyboard {
-    display: block;
 }
 
 .keyboard ul {
@@ -109,10 +92,6 @@ body {
     margin-left: 2px !important;
 }
 
-.key-red {
-    width: 110px !important;
-}
-
 .key:hover {
     cursor: pointer;
     text-decoration: none;
@@ -127,6 +106,11 @@ body {
     margin: 0;
 }
 
+.key-span {
+    height: 50px;
+    margin-top: 0 !important;
+    background-size: 62px 50px !important;
+}
 .keyboard .key:active, .keydown {
     color: #000;
     background: #ebeced;
@@ -137,12 +121,6 @@ body {
     box-shadow: inset 0 0 25px #ddd,
     0 0 3px #333;
     border-top: 1px solid #eee;
-}
-
-#esc {
-    margin: 6px 15px 0 0;
-    font-size: 7.5pt;
-    text-transform: lowercase;
 }
 
 a.key > span {
@@ -157,58 +135,8 @@ a.key > span {
     line-height: 26px !important;
 }
 
-.qwerty li #tab span {
-    text-align: left;
-    margin: 23px 0 0 10px;
-    font-size: 7.5pt;
-    text-transform: lowercase;
-}
-
-.qwerty li .alt b {
-    display: block;
-    margin: 3px 0 0;
-}
-
-.qwerty li .alt span {
-    margin: 2px 0 0;
-}
-
 .keyboard ul ol {
     list-style-type: none;
-}
-
-.keyboard h1 {
-    color: #888;
-    text-align: center;
-    font: bold 25pt/25pt arial;
-    margin: 30px 0 60px;
-}
-
-.keyboard h2 {
-    color: #666;
-    font: 13pt/0pt arial;
-}
-
-.keyboard p {
-    color: #999;
-    font: 9pt/17pt arial;
-    margin: 0 0 50px;
-}
-
-.keyboard small {
-    font: italic 8pt/12pt arial;
-    color: #aaa;
-    padding: 0 130px 0 0;
-    display: block;
-}
-
-.keyboard cite {
-    display: block;
-    padding: 0 0 30px;
-    margin: 0 auto;
-    text-align: center;
-    color: #999;
-    font: italic bold 8pt arial;
 }
 
 .keyboard ul, ol {
@@ -229,46 +157,6 @@ a.key > span {
 /* For IE 6/7 (trigger hasLayout) */
 .cf {
     zoom: 1;
-}
-
-#calculator .key {
-    background: url('../img/calculator2.png');
-    background-size: 70px 88px;
-    height: 92px !important;
-    width: 74px !important;
-    position: absolute;
-    left: 715px;
-    top: 30px;
-    box-shadow: none;
-    border-style: groove;
-    border-width: 2px;
-    border-color: white;
-    padding: 20px;
-}
-
-#alphabet .key {
-    color: black;
-    font-weight: bold;
-    height: 81px !important;
-    width: 81px !important;
-    position: absolute;
-    left: 715px;
-    top: 140px;
-    box-shadow: none;
-    border-style: groove;
-    border-width: 2px;
-    border-color: white;
-    padding: 20px;
-}
-
-#submit-button {
-    background-color: rgb(153, 1, 0);
-    border-color: rgb(106, 1, 0);
-}
-
-#submit-button:hover {
-    background-color: rgb(137, 1, 0);
-    border-color: rgb(67, 1, 0);
 }
 
 .bar-top ul button {
