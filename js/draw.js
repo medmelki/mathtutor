@@ -56,8 +56,8 @@ function flagCell(cell) {
 function deleteSelectedCell() {
     if (selectedCell) {
         selectedCell.html("");
-        if (selectedCell.prev("a.key-cloned")) {
-            flagCell(selectedCell.prev("a.key-cloned"));
+        if (selectedCell.prev($("td.cell")).children().length > 0 && selectedCell.prev($("td.cell:has(a)"))) {
+            flagCell(selectedCell.prev($("td.cell:has(a)")));
         }
     }
 }
@@ -69,6 +69,7 @@ function addKeysClickBehavior() {
     });
 
     // delete key
+    $('#delete-key').unbind("click");
     $('#delete-key').click(function () {
         deleteSelectedCell();
     });
