@@ -3,8 +3,8 @@ $(document).ready(function () {
     $('#keyboard_icon').click(function () {
         toggleAlphabeticKeyboard();
     });
-    $('#keyboard_icon').click(function () {
-    });
+
+    addScrollButtonsBehavior();
 
     //drawGraph();
 });
@@ -41,4 +41,15 @@ function toggleAlphabeticKeyboard() {
     }
 
     copyKeyToSelectedCell();
+}
+
+function addScrollButtonsBehavior() {
+    $('#scrollDown').click(function () {
+        var y = $(window).scrollTop();
+        $(window).scrollTop(y + 50);
+    });
+    $('#scrollUp').click(function () {
+        var y = $(window).scrollTop();
+        $(window).scrollTop(y - 50);
+    });
 }
