@@ -6,24 +6,35 @@ var rowsNumber = 0;
 
 $(document).ready(function () {
 
-    drawGrid();
+    drawGrid(0, 0);
 
-    addCellClickBehavior(); // flag current cell selected
     addKeysClickBehavior();
+
+    $(window).resize(function () {
+        drawGrid(0, 0);
+    });
 
 });
 
-function drawGrid() {
+function drawGrid(w, h) {
 
     var grid = $('#grid');
-    var board = $('div.keyboard');
+    var grid_width, grid_height;
 
     grid.empty();
 
-    const TOP_NAV_HEIGHT = 78;
-
-    var grid_width = grid.width();
-    var grid_height = board.height() + TOP_NAV_HEIGHT;
+    if (w === 0) {
+        grid_width = grid.width();
+    } else {
+        grid_width = w;
+    }
+    if (h === 0) {
+        var board = $('div.keyboard');
+        const TOP_NAV_HEIGHT = 78;
+        grid_height = board.height() + TOP_NAV_HEIGHT;
+    } else {
+        grid_height = h;
+    }
 
     var cell = "<td class='cell'></td>";
 
@@ -35,10 +46,8 @@ function drawGrid() {
         }
         rowsNumber++;
     }
+    addCellClickBehavior(); // flag current cell selected
 
-    $(window).resize(function () {
-        drawGrid();
-    });
 }
 
 function addCellClickBehavior() {
@@ -69,8 +78,10 @@ function deleteSelectedCell() {
 
 function returnSelectedCell() {
     if (selectedCell.nextAll("td.cell:eq(" + (columnsNumber - 1) + ")")) {
+        //drawGrid(0, $('div.keyboard').height() + 78 + 65);
         flagCell(selectedCell.nextAll("td.cell:eq(" + (columnsNumber - 1) + ")"));
     }
+
 }
 
 function addSpaceCell() {
