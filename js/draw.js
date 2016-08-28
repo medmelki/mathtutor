@@ -51,6 +51,7 @@ function drawGrid(w, h) {
 }
 
 function addCellClickBehavior() {
+    $("#grid td.cell").unbind("click");
     $("#grid td.cell").each(function () {
         $(this).click(function () {
             flagCell($(this));
@@ -79,7 +80,11 @@ function deleteSelectedCell() {
 
 function returnSelectedCell() {
     if (selectedCell.nextAll("td.cell:eq(" + (columnsNumber - 1) + ")")) {
-        //drawGrid(0, $('div.keyboard').height() + 78 + 65);
+        for (let j = 60; j <= $('#grid').width(); j += 60) {
+            $('#grid').append("<td class='cell'></td>");
+            rowsNumber++;
+        }
+        addCellClickBehavior(); // flag current cell selected
         flagCell(selectedCell.nextAll("td.cell:eq(" + (columnsNumber - 1) + ")"));
     }
 
