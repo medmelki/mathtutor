@@ -76,10 +76,24 @@ for (var i = 0; i < keys.length; i++) {
 
         // if any other key is pressed, just append it
         else {
+            if (this.classList.contains('copyTo')) {
+                return;
+            }
             input.innerHTML += btnVal;
         }
 
         // prevent page jumps
         e.preventDefault();
-    }
+    };
 }
+
+$('span.copyTo').click(function () {
+    var str = $(".screen").text();
+    var content = "<a class='key'><span>$key</span></a>";
+
+    for (var i = 0, len = str.length; i < len; i++) {
+        copyKeyToSelectedCell(content.replace("$key", str[i]));
+    }
+
+    $('#calcModal').modal("hide");
+});
