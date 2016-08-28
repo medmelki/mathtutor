@@ -1,5 +1,9 @@
 var selectedCell;
 
+var multiSelect = false;
+
+var selectedCells = [];
+
 var columnsNumber = 0;
 var rowsNumber = 0;
 
@@ -61,11 +65,21 @@ function addCellClickBehavior() {
 
 function flagCell(cell) {
 
-    cell.addClass("cell-selected");
-    if (selectedCell && cell !== selectedCell) {
-        selectedCell.removeClass("cell-selected");
+    if (multiSelect) {
+        if (cell.hasClass("cell-selected")) {
+            cell.removeClass("cell-selected");
+            selectedCells.splice(selectedCells.indexOf(cell), 1);
+        } else {
+            cell.addClass("cell-selected");
+            selectedCells.push(cell);
+        }
+    } else {
+        cell.addClass("cell-selected");
+        if (selectedCell && cell !== selectedCell) {
+            selectedCell.removeClass("cell-selected");
+        }
+        selectedCell = cell;
     }
-    selectedCell = cell;
 }
 
 function deleteSelectedCell() {

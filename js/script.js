@@ -5,6 +5,7 @@ $(document).ready(function () {
     });
 
     addScrollButtonsBehavior();
+    addSelectionButtonBehavior();
 
     //drawGraph();
 });
@@ -58,5 +59,25 @@ function addScrollButtonsBehavior() {
     $('#scrollUp').click(function () {
         var y = $(window).scrollTop();
         $(window).scrollTop(y - 50);
+    });
+}
+
+function addSelectionButtonBehavior() {
+    $("#selection").click(function () {
+        if (multiSelect) {
+            $("#selection span").css('color', 'rgb(153, 1, 0)');
+            multiSelect = false;
+            //remove all selected cell except the last one
+            for (var i = 0; i < selectedCells.length; i++) {
+                var cell = selectedCells[i];
+                cell.removeClass("cell-selected");
+                //selectedCells.splice(i, 1);
+            }
+            selectedCells = [];
+        } else {
+            $("#selection span").css('color', 'black');
+            multiSelect = true;
+
+        }
     });
 }
