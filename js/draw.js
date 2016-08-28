@@ -89,30 +89,16 @@ function addSpaceCell() {
         flagCell(selectedCell.next("td.cell"));
     }
 }
+
 function addKeysClickBehavior() {
 
-    var specialKeys = ['#delete-key', '#return-key', '#space-key'];
     // all keys
+    $('ul.qwerty li a').unbind("click");
     $('ul.qwerty li a').click(function () {
         copyKeyToSelectedCell(this);
     });
 
-    $.each(specialKeys, function (i, v) { // unbind click event
-        $(v).unbind("click");
-    });
-
-    // delete key
-    $('#delete-key').click(function () {
-        deleteSelectedCell();
-    });
-    // return key
-    $('#return-key').click(function () {
-        returnSelectedCell();
-    });
-    // space key
-    $('#space-key').click(function () {
-        addSpaceCell();
-    });
+    addSpecialKeysClickBehavior();
 
 }
 
@@ -124,3 +110,24 @@ function copyKeyToSelectedCell(element) {
         }
     }
 }
+
+function addSpecialKeysClickBehavior() {
+    var specialKeys = ['a.delete-key', 'a.return-key', 'a.space-key'];
+    $.each(specialKeys, function (i, v) { // unbind click event
+        $(v).unbind("click");
+    });
+
+    // delete key
+    $(specialKeys[0]).click(function () {
+        deleteSelectedCell();
+    });
+    // return key
+    $(specialKeys[1]).click(function () {
+        returnSelectedCell();
+    });
+    // space key
+    $(specialKeys[2]).click(function () {
+        addSpaceCell();
+    });
+}
+
