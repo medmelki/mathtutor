@@ -70,8 +70,9 @@ function flagCell(cell) {
 function deleteSelectedCell() {
     if (selectedCell) {
         selectedCell.html("");
-        if (selectedCell.prev($("td.cell")).children().length > 0 && selectedCell.prev($("td.cell:has(a)"))) {
-            flagCell(selectedCell.prev($("td.cell:has(a)")));
+        selectedCell.removeClass("filled-cell");
+        if (selectedCell.prevAll("td.filled-cell:eq(0)")) {
+            flagCell(selectedCell.prevAll("td.filled-cell:eq(0)"));
         }
     }
 }
@@ -105,6 +106,7 @@ function addKeysClickBehavior() {
 function copyKeyToSelectedCell(element) {
     if (selectedCell) {
         selectedCell.html($(element).clone().addClass("key-cloned"));
+        selectedCell.addClass("filled-cell");
         if (selectedCell.next("td.cell")) {
             flagCell(selectedCell.next("td.cell"));
         }
