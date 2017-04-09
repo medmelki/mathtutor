@@ -86,79 +86,79 @@
 <br>
 
 <div id="board" ng-controller="BoardController as board">
-</div>
-<div class="keyboard keyboard-left">
-    <ul class="cf qwerty">
-        <li><a class="key"><span>0</span></a></li>
-        <li><a class="key"><span>1</span></a></li>
-        <li><a class="key"><span>2</span></a></li>
-        <li><a class="key"><span>3</span></a></li>
-        <li><a class="key"><span>4</span></a></li>
-        <li><a class="key"><span>5</span></a></li>
-        <li><a class="key"><span>6</span></a></li>
-        <li><a class="key"><span>7</span></a></li>
-        <li><a class="key"><span>8</span></a></li>
-        <li><a class="key"><span>9</span></a></li>
-        <li><a class="key"><span>+</span></a></li>
-        <li><a class="key"><span>-</span></a></li>
-        <li><a class="key"><span>x</span></a></li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/divided%20by.png');"></span></a></li>
-        <li><a class="key"><span>=</span></a></li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/fraction.png');"></span></a></li>
-        <li><a class="key"><span>&ne;</span></a></li>
-        <li><a class="key"><span>.</span></a></li>
-        <li><a class="key key-special"><span class="key-span"
-                                             style="background: url('img/keys/plus%20or%20minus.png');"></span></a></li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/remainder.png');"></span></a></li>
-        <li><a class="key"><span><</span></a></li>
-        <li><a class="key"><span>></span></a></li>
-        <li><a class="key"><span class="key-span"
-                                 style="background: url('img/keys/less%20than%20equal%20to.png');"></span></a></li>
-        <li><a class="key"><span class="key-span"
-                                 style="background: url('img/keys/greater%20than%20equal%20to.png');"></span></a></li>
-    </ul>
-</div>
-<div id="global-grid">
-    <div id="left-grid"></div>
+    <div class="keyboard keyboard-left">
+        <ul class="cf qwerty">
+            <li><a class="key"><span>0</span></a></li>
+            <li><a class="key"><span>1</span></a></li>
+            <li><a class="key"><span>2</span></a></li>
+            <li><a class="key"><span>3</span></a></li>
+            <li><a class="key"><span>4</span></a></li>
+            <li><a class="key"><span>5</span></a></li>
+            <li><a class="key"><span>6</span></a></li>
+            <li><a class="key"><span>7</span></a></li>
+            <li><a class="key"><span>8</span></a></li>
+            <li><a class="key"><span>9</span></a></li>
+            <li><a class="key"><span>+</span></a></li>
+            <li><a class="key"><span>-</span></a></li>
+            <li><a class="key"><span>x</span></a></li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/divided%20by.png');"></span></a>
+            </li>
+            <li><a class="key"><span>=</span></a></li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/fraction.png');"></span></a></li>
+            <li><a class="key"><span>&ne;</span></a></li>
+            <li><a class="key"><span>.</span></a></li>
+            <li><a class="key key-special"><span class="key-span"
+                                                 style="background: url('img/keys/plus%20or%20minus.png');"></span></a>
+            </li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/remainder.png');"></span></a>
+            </li>
+            <li><a class="key"><span><</span></a></li>
+            <li><a class="key"><span>></span></a></li>
+            <li><a class="key"><span class="key-span"
+                                     style="background: url('img/keys/less%20than%20equal%20to.png');"></span></a></li>
+            <li><a class="key"><span class="key-span"
+                                     style="background: url('img/keys/greater%20than%20equal%20to.png');"></span></a>
+            </li>
+        </ul>
+    </div>
     <div id="grid"></div>
-    <div id="right-grid"></div>
-</div>
-<div class="keyboard keyboard-right">
-    <ul class="cf qwerty">
-        <li><a class="key key-special"><span class="key-span"
-                                             style="background: url('img/keys/trade%201%20up.png');"></span></a></li>
-        <li><a class="key"><span>$</span></a></li>
-        <li><a class="key key-special"><span class="key-span"
-                                             style="background: url('img/keys/trade%201%20down.png');"></span></a></li>
-        <li><a class="key"><span>%</span></a></li>
-        <li><a class="key"><span>(</span></a></li>
-        <li><a class="key"><span>)</span></a></li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/x%20squared.png');"></span></a></li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/square%20root.png');"></span></a>
-        </li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/root%20index.png');"></span></a></li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/pi.png');"></span></a></li>
-        <li><a class="key"><span>:</span></a></li>
-        <li><a class="key"><span>|</span></a></li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/x.png');"></span></a></li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/y.png');"></span></a></li>
-        <li><a class="key"><span>{</span></a></li>
-        <li><a class="key"><span>}</span></a></li>
-        <li><a class="key key-special"><span class="key-span" style="background: url('img/keys/repeater.png');"></span></a>
-        </li>
-        <li><a class="key key-special"><span class="key-span"
-                                             style="background: url('img/keys/degrees.png');"></span></a></li>
-        <li><a class="key"><span>[</span></a></li>
-        <li><a class="key"><span>]</span></a></li>
-        <li><a class="key space-key"><span class="key-span" style="background: url('img/keys/space%20bar.png');"></span></a>
-        </li>
-        <li><a class="key"><span class="key-span" style="background: url('img/keys/x%201%202%203.png');"></span></a>
-        </li>
-        <li><a class="key return-key"><span class="key-span" style="background: url('img/keys/return.png');"></span></a>
-        </li>
-        <li><a class="key delete-key"><span class="key-span"
-                                            style="background: url('img/keys/delete%20backspace.png');"></span></a></li>
-    </ul>
+    <div class="keyboard keyboard-right">
+        <ul class="cf qwerty">
+            <li><a class="key key-special"><span class="key-span"
+                                                 style="background: url('img/keys/trade%201%20up.png');"></span></a></li>
+            <li><a class="key"><span>$</span></a></li>
+            <li><a class="key key-special"><span class="key-span"
+                                                 style="background: url('img/keys/trade%201%20down.png');"></span></a></li>
+            <li><a class="key"><span>%</span></a></li>
+            <li><a class="key"><span>(</span></a></li>
+            <li><a class="key"><span>)</span></a></li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/x%20squared.png');"></span></a></li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/square%20root.png');"></span></a>
+            </li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/root%20index.png');"></span></a></li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/pi.png');"></span></a></li>
+            <li><a class="key"><span>:</span></a></li>
+            <li><a class="key"><span>|</span></a></li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/x.png');"></span></a></li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/y.png');"></span></a></li>
+            <li><a class="key"><span>{</span></a></li>
+            <li><a class="key"><span>}</span></a></li>
+            <li><a class="key key-special"><span class="key-span" style="background: url('img/keys/repeater.png');"></span></a>
+            </li>
+            <li><a class="key key-special"><span class="key-span"
+                                                 style="background: url('img/keys/degrees.png');"></span></a></li>
+            <li><a class="key"><span>[</span></a></li>
+            <li><a class="key"><span>]</span></a></li>
+            <li><a class="key space-key"><span class="key-span" style="background: url('img/keys/space%20bar.png');"></span></a>
+            </li>
+            <li><a class="key"><span class="key-span" style="background: url('img/keys/x%201%202%203.png');"></span></a>
+            </li>
+            <li><a class="key return-key"><span class="key-span" style="background: url('img/keys/return.png');"></span></a>
+            </li>
+            <li><a class="key delete-key"><span class="key-span"
+                                                style="background: url('img/keys/delete%20backspace.png');"></span></a></li>
+        </ul>
+    </div>
 </div>
 
 <!-- Calculator Modal-->
