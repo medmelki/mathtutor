@@ -33,22 +33,19 @@ function drawGrid(w, h) {
         grid_width = w;
     }
     if (h === 0) {
-        var board = $('div.keyboard');
-        const TOP_NAV_HEIGHT = 78;
-        grid_height = board.height() + TOP_NAV_HEIGHT;
+        grid_height = grid.height();
     } else {
         grid_height = h;
     }
 
     var cell = "<td class='cell'></td>";
 
-    for (let i = 0; i <= grid_height; i += 60) {
-        columnsNumber = 0;
-        for (let j = 60; j <= grid_width; j += 60) {
+    rowsNumber = Math.floor(grid_height / 60);
+    columnsNumber = Math.floor(grid_width / 60);
+    for (let i = 0; i < rowsNumber; i++) {
+        for (let j = 0; j < columnsNumber; j++) {
             grid.append(cell);
-            columnsNumber++;
         }
-        rowsNumber++;
     }
     addCellClickBehavior(); // flag current cell selected
 
