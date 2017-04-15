@@ -45,11 +45,9 @@ function addSpaceCell() {
     }
 }
 
-function addKeysClickBehavior() {
-
-    // all normal keys
-    $('ul.qwerty li a').unbind("click");
-    $('ul.qwerty li a').click(function () {
+function addNormalKeysClickBehavior($allKeys) {
+    $allKeys.unbind("click");
+    $allKeys.click(function () {
         let previousFilledCell = getPreviousFilledCell();
         if (previousFilledCell.data("indexingApplied")) {
             let keyValue = $(this).text();
@@ -64,6 +62,12 @@ function addKeysClickBehavior() {
             copyKeyToSelectedCell(this);
         }
     });
+}
+function addKeysClickBehavior() {
+
+    const $allKeys = $('ul.qwerty li a');
+
+    addNormalKeysClickBehavior($allKeys);
 
     // indexing keys
     addIndexingKeysClickBehavior();
