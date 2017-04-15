@@ -50,7 +50,19 @@ function addKeysClickBehavior() {
     // all normal keys
     $('ul.qwerty li a').unbind("click");
     $('ul.qwerty li a').click(function () {
-        copyKeyToSelectedCell(this);
+        let previousFilledCell = getPreviousFilledCell();
+        if (previousFilledCell.data("indexingApplied")) {
+            let keyValue = $(this).text();
+            previousFilledCell.html(
+                previousFilledCell.html()
+                    .replace(
+                        /<span>(.*)<\/span>/,
+                        '<span>$1<sup>' + keyValue + '</sup><\/span>'
+                    )
+            );
+        } else {
+            copyKeyToSelectedCell(this);
+        }
     });
 
     // indexing keys
@@ -65,14 +77,15 @@ function copyKeyToSelectedCell(element) {
     if (selectedCell) {
         selectedCell.html($(element).clone().addClass("key-cloned"));
         selectedCell.addClass("filled-cell");
-        if (selectedCell.next("td.cell")) {
-            flagCell(selectedCell.next("td.cell"));
+        let nextCell = selectedCell.next("td.cell");
+        if (nextCell) {
+            flagCell(nextCell);
         }
     }
 }
 
 function addSpecialKeysClickBehavior() {
-    var specialKeys = ['a.delete-key', 'a.return-key', 'a.space-key'];
+    let specialKeys = ['a.delete-key', 'a.return-key', 'a.space-key'];
     $.each(specialKeys, function (i, v) { // unbind click event
         $(v).unbind("click");
     });
@@ -92,22 +105,44 @@ function addSpecialKeysClickBehavior() {
 }
 
 function addIndexingKeysClickBehavior() {
-    var specialKeys = ['#repeater-key', '#degrees-key', '#indexing-key'];
+    let specialKeys = ['#repeater-key', '#degrees-key', '#indexing-key'];
     $.each(specialKeys, function (i, v) { // unbind click event
         $(v).unbind("click");
     });
 
     // repeater key
     $(specialKeys[0]).click(function () {
-        deleteSelectedCell();
+        let previousFilledCell = getPreviousFilledCell();
+        if (!previousFilledCell.data("repeaterApplied")) {
+            previousFilledCell.html(
+                previousFilledCell.html()
+                    .replace(
+                        /<span>(.*)<\/span>/,
+                        '<span>$1<sup>.</sup><\/span>'
+                    )
+            );
+            previousFilledCell.data("repeaterApplied", true);
+        }
     });
     // degrees key
     $(specialKeys[1]).click(function () {
-        returnSelectedCell();
+        let previousFilledCell = getPreviousFilledCell();
+        if (!previousFilledCell.data("degreesApplied")) {
+            previousFilledCell.html(
+                previousFilledCell.html()
+                    .replace(
+                        /<span>(.*)<\/span>/,
+                        '<span>$1°<\/span>'
+                    )
+            );
+            previousFilledCell.data("degreesApplied", true);
+        }
     });
     // indexing key
     $(specialKeys[2]).click(function () {
-        addSpaceCell();
+        let previousFilledCell = getPreviousFilledCell();
+        // toggle indexing mode for keyboards
+        previousFilledCell.data("indexingApplied", !previousFilledCell.data("indexingApplied"));
     });
 }
 

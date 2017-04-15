@@ -154,7 +154,6 @@ a.key > span {
     display: inline-flex;
 }
 
-
 #grid {
     width: 73%;
     margin: 2px;
@@ -163,4 +162,9 @@ a.key > span {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+sup {
+    top: -0.8em;
+    font-size: 40%;
 }
