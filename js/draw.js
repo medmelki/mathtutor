@@ -1,13 +1,3 @@
-var selectedCell;
-
-var multiSelect = false;
-
-var selectedCells = [];
-
-var columnsNumber = 0;
-var rowsNumber = 0;
-
-
 $(document).ready(function () {
 
     drawGrid(0, 0);
@@ -20,37 +10,6 @@ $(document).ready(function () {
 
 });
 
-function drawGrid(w, h) {
-
-    var grid = $('#grid');
-    var grid_width, grid_height;
-
-    grid.empty();
-
-    if (w === 0) {
-        grid_width = grid.width();
-    } else {
-        grid_width = w;
-    }
-    if (h === 0) {
-        grid_height = grid.height();
-    } else {
-        grid_height = h;
-    }
-
-    var cell = "<td class='cell'></td>";
-
-    rowsNumber = Math.floor(grid_height / 62);
-    columnsNumber = Math.floor(grid_width / 62);
-    for (let i = 0; i < rowsNumber; i++) {
-        for (let j = 0; j < columnsNumber; j++) {
-            grid.append(cell);
-        }
-    }
-    addCellClickBehavior(); // flag current cell selected
-
-}
-
 function addCellClickBehavior() {
     $("#grid td.cell").unbind("click");
     $("#grid td.cell").each(function () {
@@ -60,41 +19,17 @@ function addCellClickBehavior() {
     });
 }
 
-function flagCell(cell) {
-
-    if (multiSelect) {
-        if (selectedCells.length < 1 && selectedCell) {
-            selectedCells.push(selectedCell);
-        }
-        if (cell.hasClass("cell-selected")) {
-            cell.removeClass("cell-selected");
-            selectedCells.splice(selectedCells.indexOf(cell), 1);
-        } else {
-            cell.addClass("cell-selected");
-            selectedCells.push(cell);
-        }
-    } else {
-        cell.addClass("cell-selected");
-        if (selectedCell && cell !== selectedCell) {
-            selectedCell.removeClass("cell-selected");
-        }
-        selectedCell = cell;
-    }
-}
-
 function deleteSelectedCell() {
     if (selectedCell) {
         selectedCell.html("");
         selectedCell.removeClass("filled-cell");
-        if (selectedCell.prevAll("td.filled-cell:eq(0)")) {
-            flagCell(selectedCell.prevAll("td.filled-cell:eq(0)"));
-        }
+        flagCell(getPreviousFilledCell());
     }
 }
 
 function returnSelectedCell() {
     if (selectedCell.nextAll("td.cell:eq(" + (columnsNumber - 1) + ")")) {
-        for (let j = 60; j <= $('#grid').width(); j += 60) {
+        for (let j = cell_side; j <= $('#grid').width(); j += cell_side) {
             $('#grid').append("<td class='cell'></td>");
             rowsNumber++;
         }
@@ -112,12 +47,16 @@ function addSpaceCell() {
 
 function addKeysClickBehavior() {
 
-    // all keys
+    // all normal keys
     $('ul.qwerty li a').unbind("click");
     $('ul.qwerty li a').click(function () {
         copyKeyToSelectedCell(this);
     });
 
+    // indexing keys
+    addIndexingKeysClickBehavior();
+
+    // red special keys
     addSpecialKeysClickBehavior();
 
 }
@@ -147,6 +86,26 @@ function addSpecialKeysClickBehavior() {
         returnSelectedCell();
     });
     // space key
+    $(specialKeys[2]).click(function () {
+        addSpaceCell();
+    });
+}
+
+function addIndexingKeysClickBehavior() {
+    var specialKeys = ['#repeater-key', '#degrees-key', '#indexing-key'];
+    $.each(specialKeys, function (i, v) { // unbind click event
+        $(v).unbind("click");
+    });
+
+    // repeater key
+    $(specialKeys[0]).click(function () {
+        deleteSelectedCell();
+    });
+    // degrees key
+    $(specialKeys[1]).click(function () {
+        returnSelectedCell();
+    });
+    // indexing key
     $(specialKeys[2]).click(function () {
         addSpaceCell();
     });
