@@ -49,13 +49,18 @@ function addNormalKeysClickBehavior($allKeys) {
     $allKeys.unbind("click");
     $allKeys.click(function () {
         let previousFilledCell = getPreviousFilledCell();
-        if (previousFilledCell.data("indexingApplied")) {
-            let keyValue = $(this).text();
+        if (previousFilledCell.data("indexingUpApplied") || previousFilledCell.data("indexingDownApplied")) {
+
+            let keyValueWrapped = '<sup>' + $(this).text() + '</sup>';
+            if (previousFilledCell.data("indexingDownApplied")) {
+                keyValueWrapped = keyValueWrapped.replace('sup', 'sub');
+            }
+
             previousFilledCell.html(
                 previousFilledCell.html()
                     .replace(
                         /<span>(.*)<\/span>/,
-                        '<span>$1<sup>' + keyValue + '</sup><\/span>'
+                        '<span>$1' + keyValueWrapped + '<\/span>'
                     )
             );
         } else {
@@ -109,7 +114,7 @@ function addSpecialKeysClickBehavior() {
 }
 
 function addIndexingKeysClickBehavior() {
-    let specialKeys = ['#repeater-key', '#degrees-key', '#indexing-key'];
+    let specialKeys = ['#repeater-key', '#degrees-key', '#indexingUp-key', '#indexingDown-key'];
     $.each(specialKeys, function (i, v) { // unbind click event
         $(v).unbind("click");
     });
@@ -128,6 +133,7 @@ function addIndexingKeysClickBehavior() {
             previousFilledCell.data("repeaterApplied", true);
         }
     });
+
     // degrees key
     $(specialKeys[1]).click(function () {
         let previousFilledCell = getPreviousFilledCell();
@@ -142,11 +148,19 @@ function addIndexingKeysClickBehavior() {
             previousFilledCell.data("degreesApplied", true);
         }
     });
-    // indexing key
+
+    // indexingUp key
     $(specialKeys[2]).click(function () {
         let previousFilledCell = getPreviousFilledCell();
         // toggle indexing mode for keyboards
-        previousFilledCell.data("indexingApplied", !previousFilledCell.data("indexingApplied"));
+        previousFilledCell.data("indexingUpApplied", !previousFilledCell.data("indexingUpApplied"));
+    });
+
+    // indexingDown key
+    $(specialKeys[3]).click(function () {
+        let previousFilledCell = getPreviousFilledCell();
+        // toggle indexing mode for keyboards
+        previousFilledCell.data("indexingDownApplied", !previousFilledCell.data("indexingDownApplied"));
     });
 }
 
