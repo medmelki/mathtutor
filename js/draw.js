@@ -45,6 +45,35 @@ function addSpaceCell() {
     }
 }
 
+function copyKeyToSelectedCell(element) {
+    if (selectedCell) {
+        selectedCell.html($(element).clone().addClass("key-cloned"));
+        selectedCell.addClass("filled-cell");
+
+        let nextCell = getNextCell();
+        if (getNextCell()) {
+            flagCell(nextCell);
+            if (rootMode) {
+                nextCell.addClass('cell-rooted');
+            }
+        }
+    }
+}
+
+function addKeysClickBehavior() {
+
+    const $allKeys = $('ul.qwerty li a');
+
+    addNormalKeysClickBehavior($allKeys);
+
+    // indexing keys
+    addIndexingKeysClickBehavior();
+
+    // red special keys
+    addSpecialKeysClickBehavior();
+
+}
+
 function addNormalKeysClickBehavior($allKeys) {
     $allKeys.unbind("click");
     $allKeys.click(function () {
@@ -73,34 +102,6 @@ function addNormalKeysClickBehavior($allKeys) {
             copyKeyToSelectedCell(this);
         }
     });
-}
-function addKeysClickBehavior() {
-
-    const $allKeys = $('ul.qwerty li a');
-
-    addNormalKeysClickBehavior($allKeys);
-
-    // indexing keys
-    addIndexingKeysClickBehavior();
-
-    // red special keys
-    addSpecialKeysClickBehavior();
-
-}
-
-function copyKeyToSelectedCell(element) {
-    if (selectedCell) {
-        selectedCell.html($(element).clone().addClass("key-cloned"));
-        selectedCell.addClass("filled-cell");
-
-        let nextCell = getNextCell();
-        if (getNextCell()) {
-            flagCell(nextCell);
-            if (rootMode) {
-                nextCell.addClass('cell-rooted');
-            }
-        }
-    }
 }
 
 function addSpecialKeysClickBehavior() {
