@@ -3,6 +3,7 @@ const cell_side = 62;
 var selectedCell;
 
 var multiSelect = false;
+var rootMode = false;
 
 var selectedCells = [];
 
@@ -68,4 +69,14 @@ function getPreviousFilledCell() {
     if (selectedCell) {
         return selectedCell.prevAll("td.filled-cell:eq(0)");
     }
+}
+
+function getCurrentCell() {
+    if (selectedCell) {
+        return selectedCell;
+    }
+}
+
+function getNextCell() {
+    return selectedCell.next("td.cell");
 }

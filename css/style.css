@@ -172,3 +172,19 @@ sup {
 sub {
     font-size: 40%;
 }
+
+.cell-rooted {
+    background: url("../img/keys/under_root.jpg");
+}
+
+.cell-rooted > a > span {
+    top: 7px;
+    position: relative;
+    font-size: 38px;
+}
+
+.root-span {
+    position: relative;
+    top: 10px;
+    left: 18px;
+}

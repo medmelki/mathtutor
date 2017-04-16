@@ -92,9 +92,13 @@ function copyKeyToSelectedCell(element) {
     if (selectedCell) {
         selectedCell.html($(element).clone().addClass("key-cloned"));
         selectedCell.addClass("filled-cell");
-        let nextCell = selectedCell.next("td.cell");
-        if (nextCell) {
+
+        let nextCell = getNextCell();
+        if (getNextCell()) {
             flagCell(nextCell);
+            if (rootMode) {
+                nextCell.addClass('cell-rooted');
+            }
         }
     }
 }
@@ -120,7 +124,7 @@ function addSpecialKeysClickBehavior() {
 }
 
 function addIndexingKeysClickBehavior() {
-    let specialKeys = ['#repeater-key', '#degrees-key', '#indexingUpRight-key', '#indexingUpLeft-key', '#indexingDown-key',];
+    let specialKeys = ['#repeater-key', '#degrees-key', '#indexingUpRight-key', '#indexingUpLeft-key', '#indexingDown-key', '#squareRoot-key'];
     $.each(specialKeys, function (i, v) { // unbind click event
         $(v).unbind("click");
     });
@@ -172,6 +176,18 @@ function addIndexingKeysClickBehavior() {
     $(specialKeys[4]).click(function () {
         let previousFilledCell = getPreviousFilledCell();
         previousFilledCell.data("indexingDownApplied", !previousFilledCell.data("indexingDownApplied"));
+    });
+
+    // squareRoot key
+    $(specialKeys[5]).click(function () {
+        rootMode = !rootMode;
+        if (rootMode) {
+            let element = $(this).clone();
+            element.html(`<span class='root-span'>&radic;<\/span><\/a>`);
+            copyKeyToSelectedCell(element[0]);
+        } else {
+            getCurrentCell().removeClass('cell-rooted');
+        }
     });
 }
 
