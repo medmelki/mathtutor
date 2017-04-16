@@ -22,7 +22,7 @@ function addCellClickBehavior() {
 function deleteSelectedCell() {
     if (selectedCell) {
         selectedCell.html("");
-        selectedCell.removeClass("filled-cell");
+        selectedCell.removeClass("filled-cell rooted-cell");
         flagCell(getPreviousFilledCell());
     }
 }
@@ -54,7 +54,7 @@ function copyKeyToSelectedCell(element) {
         if (getNextCell()) {
             flagCell(nextCell);
             if (rootMode) {
-                nextCell.addClass('cell-rooted');
+                nextCell.addClass('rooted-cell');
             }
         }
     }
@@ -187,7 +187,7 @@ function addIndexingKeysClickBehavior() {
             element.html(`<span class='root-span'>&radic;<\/span><\/a>`);
             copyKeyToSelectedCell(element[0]);
         } else {
-            getCurrentCell().removeClass('cell-rooted');
+            getCurrentCell().removeClass('rooted-cell');
         }
     });
 }
