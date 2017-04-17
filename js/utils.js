@@ -80,3 +80,13 @@ function getCurrentCell() {
 function getNextCell() {
     return selectedCell.next("td.cell");
 }
+
+function isIndexingMode(previousFilledCell) {
+    if (previousFilledCell) {
+        return previousFilledCell.data("indexingUpRightApplied") ||
+            previousFilledCell.data("indexingUpLeftApplied") ||
+            previousFilledCell.data("indexingDownApplied") ||
+            previousFilledCell.data("rootIndexingApplied");
+    }
+    return false;
+}

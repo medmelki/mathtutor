@@ -78,23 +78,22 @@ function addNormalKeysClickBehavior($allKeys) {
     $allKeys.unbind("click");
     $allKeys.click(function () {
         let previousFilledCell = getPreviousFilledCell();
-        if (previousFilledCell.data("indexingUpRightApplied") ||
-            previousFilledCell.data("indexingUpLeftApplied") ||
-            previousFilledCell.data("indexingDownApplied")) {
+        if (isIndexingMode(previousFilledCell)) {
 
             let keyValueWrapped = '<sup>' + $(this).text() + '</sup>';
             if (previousFilledCell.data("indexingDownApplied")) {
                 keyValueWrapped = keyValueWrapped.replace('sup', 'sub');
             }
-            let replaceValue = '<span>$1' + keyValueWrapped + '<\/span>';
+            let replaceValue = '<span>$2' + keyValueWrapped + '<\/span>';
 
-            if (previousFilledCell.data("indexingUpLeftApplied")) {
-                replaceValue = '<span>' + keyValueWrapped + '$1<\/span>';
+            if (previousFilledCell.data("indexingUpLeftApplied") ||
+                previousFilledCell.data("rootIndexingApplied")) {
+                replaceValue = '<span>' + keyValueWrapped + '$2<\/span>';
             }
             previousFilledCell.html(
                 previousFilledCell.html()
                     .replace(
-                        /<span>(.*)<\/span>/,
+                        /<span( class="root-span")?>(.*)<\/span>/,
                         replaceValue
                     )
             );
@@ -125,7 +124,8 @@ function addSpecialKeysClickBehavior() {
 }
 
 function addIndexingKeysClickBehavior() {
-    let specialKeys = ['#repeater-key', '#degrees-key', '#indexingUpRight-key', '#indexingUpLeft-key', '#indexingDown-key', '#squareRoot-key'];
+    let specialKeys = ['#repeater-key', '#degrees-key', '#indexingUpRight-key', '#indexingUpLeft-key',
+        '#indexingDown-key', '#squareRoot-key', '#rootIndexing-key'];
     $.each(specialKeys, function (i, v) { // unbind click event
         $(v).unbind("click");
     });
@@ -160,14 +160,14 @@ function addIndexingKeysClickBehavior() {
         }
     });
 
-    // indexingUpRightRight key
+    // indexingUpRightkey
     $(specialKeys[2]).click(function () {
         let previousFilledCell = getPreviousFilledCell();
         // toggle indexing mode for keyboards
         previousFilledCell.data("indexingUpRightApplied", !previousFilledCell.data("indexingUpRightApplied"));
     });
 
-    // indexingUpLeftRight key
+    // indexingUpLeft key
     $(specialKeys[3]).click(function () {
         let previousFilledCell = getPreviousFilledCell();
         previousFilledCell.data("indexingUpLeftApplied", !previousFilledCell.data("indexingUpLeftApplied"));
@@ -189,6 +189,12 @@ function addIndexingKeysClickBehavior() {
         } else {
             getCurrentCell().removeClass('rooted-cell');
         }
+    });
+
+    // rootIndexing key
+    $(specialKeys[6]).click(function () {
+        let previousFilledCell = getPreviousFilledCell();
+        previousFilledCell.data("rootIndexingApplied", !previousFilledCell.data("rootIndexingApplied"));
     });
 }
 
