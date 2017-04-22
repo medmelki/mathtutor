@@ -4,6 +4,7 @@ var selectedCell;
 
 var multiSelect = false;
 var rootMode = false;
+var divisionMode = false;
 
 var selectedCells = [];
 

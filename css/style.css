@@ -173,11 +173,11 @@ sub {
     font-size: 40%;
 }
 
-.rooted-cell {
+.rooted-cell, .divided-cell {
     background: url("../img/keys/under_root.jpg");
 }
 
-.rooted-cell > a > span {
+.rooted-cell > a > span, .divided-cell > a > span  {
     top: 7px;
     position: relative;
     font-size: 38px;

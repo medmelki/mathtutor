@@ -22,7 +22,7 @@ function addCellClickBehavior() {
 function deleteSelectedCell() {
     if (selectedCell) {
         selectedCell.html("");
-        selectedCell.removeClass("filled-cell rooted-cell");
+        selectedCell.removeClass("filled-cell rooted-cell divided-cell");
         flagCell(getPreviousFilledCell());
     }
 }
@@ -55,6 +55,9 @@ function copyKeyToSelectedCell(element) {
             flagCell(nextCell);
             if (rootMode) {
                 nextCell.addClass('rooted-cell');
+            }
+            if (divisionMode) {
+                nextCell.addClass('divided-cell');
             }
         }
     }
@@ -128,7 +131,7 @@ function addSpecialKeysClickBehavior() {
 
 function addIndexingKeysClickBehavior() {
     let specialKeys = ['#repeater-key', '#degrees-key', '#indexingUpRight-key', '#indexingUpLeft-key',
-        '#indexingDown-key', '#squareRoot-key', '#rootIndexing-key'];
+        '#indexingDown-key', '#squareRoot-key', '#rootIndexing-key', '#longDivision-key'];
     $.each(specialKeys, function (i, v) { // unbind click event
         $(v).unbind("click");
     });
@@ -198,6 +201,16 @@ function addIndexingKeysClickBehavior() {
     $(specialKeys[6]).click(function () {
         let previousFilledCell = getPreviousFilledCell();
         previousFilledCell.data("rootIndexingApplied", !previousFilledCell.data("rootIndexingApplied"));
+    });
+
+    // longDivision key
+    $(specialKeys[7]).click(function () {
+        divisionMode = !divisionMode;
+        if (divisionMode) {
+            copyKeyToSelectedCell(this);
+        } else {
+            getCurrentCell().removeClass('divided-cell');
+        }
     });
 }
 
