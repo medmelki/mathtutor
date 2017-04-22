@@ -86,7 +86,7 @@ function isIndexingMode(previousFilledCell) {
         return previousFilledCell.data("indexingUpRightApplied") ||
             previousFilledCell.data("indexingUpLeftApplied") ||
             previousFilledCell.data("indexingDownApplied") ||
-            previousFilledCell.data("rootIndexingApplied");
+            (previousFilledCell.data("rootIndexingApplied") && rootMode);
     }
     return false;
 }

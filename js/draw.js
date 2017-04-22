@@ -86,9 +86,12 @@ function addNormalKeysClickBehavior($allKeys) {
             }
             let replaceValue = '<span>$2' + keyValueWrapped + '<\/span>';
 
-            if (previousFilledCell.data("indexingUpLeftApplied") ||
-                previousFilledCell.data("rootIndexingApplied")) {
+            if (previousFilledCell.data("indexingUpLeftApplied")) {
                 replaceValue = '<span>' + keyValueWrapped + '$2<\/span>';
+            }
+            if (
+                previousFilledCell.data("rootIndexingApplied")) {
+                replaceValue = '<span class="root-indexed-span ">' + keyValueWrapped + '$2<\/span>';
             }
             previousFilledCell.html(
                 previousFilledCell.html()

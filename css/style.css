@@ -183,8 +183,12 @@ sub {
     font-size: 38px;
 }
 
-.root-span {
+.root-span, .root-indexed-span {
     position: relative;
     top: 10px;
     left: 18px;
+}
+
+.root-indexed-span {
+    left: 12px;
 }
