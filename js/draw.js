@@ -47,17 +47,34 @@ function addSpaceCell() {
 
 function copyKeyToSelectedCell(element) {
     if (selectedCell) {
-        selectedCell.html($(element).clone().addClass("key-cloned"));
-        selectedCell.addClass("filled-cell");
-
-        let nextCell = getNextCell();
-        if (getNextCell()) {
-            flagCell(nextCell);
-            if (rootMode) {
-                nextCell.addClass('rooted-cell');
+        if (fractionMode) {
+            if (fractionUp) {
+                if (!selectedCell.hasClass("fraction-cell"))
+                    selectedCell.html(`<span>${$(element).text()}</span>&frasl;<sub></sub>`).addClass("fraction-cell");
+                else
+                    selectedCell.html(
+                        selectedCell.html()
+                            .replace(/<span>(.*)<\/span>/,
+                                `<span>$1${$(element).text()}</span>`));
+            } else {
+                selectedCell.html(
+                    selectedCell.html()
+                        .replace(/<sub>(.*)<\/sub>/,
+                            `<sub>$1${$(element).text()}</sub>`));
             }
-            if (divisionMode) {
-                nextCell.addClass('divided-cell');
+        } else {
+            selectedCell.html($(element).clone().addClass("key-cloned"));
+            selectedCell.addClass("filled-cell");
+
+            let nextCell = getNextCell();
+            if (getNextCell()) {
+                flagCell(nextCell);
+                if (rootMode) {
+                    nextCell.addClass('rooted-cell');
+                }
+                if (divisionMode) {
+                    nextCell.addClass('divided-cell');
+                }
             }
         }
     }
@@ -92,8 +109,7 @@ function addNormalKeysClickBehavior($allKeys) {
             if (previousFilledCell.data("indexingUpLeftApplied")) {
                 replaceValue = '<span>' + keyValueWrapped + '$2<\/span>';
             }
-            if (
-                previousFilledCell.data("rootIndexingApplied")) {
+            if (previousFilledCell.data("rootIndexingApplied")) {
                 replaceValue = '<span class="root-indexed-span ">' + keyValueWrapped + '$2<\/span>';
             }
             previousFilledCell.html(
@@ -131,7 +147,7 @@ function addSpecialKeysClickBehavior() {
 
 function addIndexingKeysClickBehavior() {
     let specialKeys = ['#repeater-key', '#degrees-key', '#indexingUpRight-key', '#indexingUpLeft-key',
-        '#indexingDown-key', '#squareRoot-key', '#rootIndexing-key', '#longDivision-key'];
+        '#indexingDown-key', '#squareRoot-key', '#rootIndexing-key', '#longDivision-key', '#fractions-key'];
     $.each(specialKeys, function (i, v) { // unbind click event
         $(v).unbind("click");
     });
@@ -210,6 +226,25 @@ function addIndexingKeysClickBehavior() {
             copyKeyToSelectedCell(this);
         } else {
             getCurrentCell().removeClass('divided-cell');
+        }
+    });
+
+    // fractions key
+    $(specialKeys[8]).click(function () {
+        if (!fractionMode) {
+            fractionMode = !fractionMode;
+            fractionUp = true;
+        } else {
+            if (fractionUp) {
+                fractionUp = false;
+                fractionDown = true;
+            }
+            else if (fractionDown) {
+                fractionDown = false;
+                fractionMode = false;
+                flagCell(getNextCell());
+            }
+            // copyKeyToSelectedCell(this);
         }
     });
 }

@@ -5,6 +5,9 @@ var selectedCell;
 var multiSelect = false;
 var rootMode = false;
 var divisionMode = false;
+var fractionMode = false;
+var fractionUp = true;
+var fractionDown = false;
 
 var selectedCells = [];
 

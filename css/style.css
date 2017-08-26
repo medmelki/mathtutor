@@ -177,7 +177,7 @@ sub {
     background: url("../img/keys/under_root.jpg");
 }
 
-.rooted-cell > a > span, .divided-cell > a > span  {
+.rooted-cell > a > span, .divided-cell > a > span {
     top: 7px;
     position: relative;
     font-size: 38px;
@@ -191,4 +191,20 @@ sub {
 
 .root-indexed-span {
     left: 12px;
+}
+
+.fraction-cell {
+    font-size: 40px;
+}
+
+.fraction-cell > span {
+    font-size: 40px;
+    position: relative;
+    top: -8px;
+    left: 2px;
+}
+
+.fraction-cell > sub {
+    font-size: 40px;
+    top: 12px;
 }
