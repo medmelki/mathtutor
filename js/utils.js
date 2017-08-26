@@ -1,4 +1,4 @@
-const cell_side = 62;
+const CELL_SIDE = 62;
 
 var selectedCell;
 
@@ -36,8 +36,8 @@ function drawGrid(w, h) {
     var cell = "<td class='cell'></td>";
 
 
-    rowsNumber = Math.floor(grid_height / cell_side);
-    columnsNumber = Math.floor(grid_width / cell_side);
+    rowsNumber = Math.floor(grid_height / CELL_SIDE);
+    columnsNumber = Math.floor(grid_width / CELL_SIDE);
     for (let i = 0; i < rowsNumber; i++) {
         for (let j = 0; j < columnsNumber; j++) {
             grid.append(cell);

@@ -29,7 +29,7 @@ function deleteSelectedCell() {
 
 function returnSelectedCell() {
     if (selectedCell.nextAll("td.cell:eq(" + (columnsNumber - 1) + ")")) {
-        for (let j = cell_side; j <= $('#grid').width(); j += cell_side) {
+        for (let j = CELL_SIDE; j <= $('#grid').width(); j += CELL_SIDE) {
             $('#grid').append("<td class='cell'></td>");
             rowsNumber++;
         }
