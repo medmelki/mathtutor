@@ -92,6 +92,7 @@ function addKeysClickBehavior() {
     // red special keys
     addSpecialKeysClickBehavior();
 
+    addTopBarButtonsClickBehavior();
 }
 
 function addNormalKeysClickBehavior($allKeys) {
@@ -249,3 +250,22 @@ function addIndexingKeysClickBehavior() {
     });
 }
 
+function addTopBarButtonsClickBehavior() {
+    const CUT_BTN_INDEX = 9;
+    const COPY_BTN_INDEX = 10;
+    const PASTE_BTN_INDEX = 12;
+
+    let btnSelector = ".bar-top button";
+
+    $(btnSelector)[CUT_BTN_INDEX].click(function () {
+        Operations.cut(getCurrentCell());
+    });
+
+    $(btnSelector)[COPY_BTN_INDEX].click(function () {
+        Operations.copy(getCurrentCell());
+    });
+
+    $(btnSelector)[PASTE_BTN_INDEX].click(function () {
+        Operations.paste(getCurrentCell());
+    });
+}
