@@ -7,19 +7,6 @@
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="css/board-style.css">
     <link rel="stylesheet" href="css/calculator-style.css">
-    <script type="text/javascript" async
-            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
-    <script src="js/plugins/jquery.min.js"></script>
-    <script src="js/plugins/bootstrap.min.js"></script>
-    <script src="js/plugins/quickplot.min.js"></script>
-    <script src="js/plugins/angular.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/draw.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controller/keyboard.js"></script>
-    <script src="js/controller/board.js"></script>
-    <script src="js/script.js"></script>
 </head>
 <body ng-app="myApp">
 <nav class="bar-top">
@@ -105,7 +92,9 @@
             <li><a class="key"><span class="key-span" style="background: url('img/keys/divided%20by.png');"></span></a>
             </li>
             <li><a class="key"><span>=</span></a></li>
-            <li><a id="fractions-key" class="key"><span class="key-span" style="background: url('img/keys/fraction.png');"></span></a></li>
+            <li><a id="fractions-key" class="key"><span class="key-span"
+                                                        style="background: url('img/keys/fraction.png');"></span></a>
+            </li>
             <li><a class="key"><span>&ne;</span></a></li>
             <li><a class="key"><span>.</span></a></li>
             <li><a class="key key-special"><span class="key-span"
@@ -126,17 +115,23 @@
     <div class="keyboard keyboard-right">
         <ul class="cf qwerty">
             <li><a id="indexingUpLeft-key" class="key"><span class="key-span"
-                                                 style="background: url('img/keys/trade%201%20up.png');"></span></a></li>
+                                                             style="background: url('img/keys/trade%201%20up.png');"></span></a>
+            </li>
             <li><a class="key"><span>$</span></a></li>
             <li><a id="longDivision-key" class="key"><span class="key-span" style="background: url('img/keys/division.png');
             position: relative;top: -3px;left: 3px;"></span></a>
             <li><a class="key"><span>%</span></a></li>
             <li><a class="key"><span>(</span></a></li>
             <li><a class="key"><span>)</span></a></li>
-            <li><a id="indexingUpRight-key" class="key"><span class="key-span" style="background: url('img/keys/x%20squared.png');"></span></a></li>
-            <li><a id="squareRoot-key" class="key"><span class="key-span" style="background: url('img/keys/square%20root.png');"></span></a>
+            <li><a id="indexingUpRight-key" class="key"><span class="key-span"
+                                                              style="background: url('img/keys/x%20squared.png');"></span></a>
             </li>
-            <li><a id="rootIndexing-key" class="key"><span class="key-span" style="background: url('img/keys/root%20index.png');"></span></a></li>
+            <li><a id="squareRoot-key" class="key"><span class="key-span"
+                                                         style="background: url('img/keys/square%20root.png');"></span></a>
+            </li>
+            <li><a id="rootIndexing-key" class="key"><span class="key-span"
+                                                           style="background: url('img/keys/root%20index.png');"></span></a>
+            </li>
             <li><a class="key"><span class="key-span" style="background: url('img/keys/pi.png');"></span></a></li>
             <li><a class="key"><span>:</span></a></li>
             <li><a class="key"><span>|</span></a></li>
@@ -144,20 +139,25 @@
             <li><a class="key"><span class="key-span" style="background: url('img/keys/y.png');"></span></a></li>
             <li><a class="key"><span>{</span></a></li>
             <li><a class="key"><span>}</span></a></li>
-            <li><a id="repeater-key" class="key key-special"><span class="key-span" style="background: url('img/keys/repeater.png');"></span></a>
+            <li><a id="repeater-key" class="key key-special"><span class="key-span"
+                                                                   style="background: url('img/keys/repeater.png');"></span></a>
             </li>
             <li><a id="degrees-key" class="key key-special"><span class="key-span"
-                                                 style="background: url('img/keys/degrees.png');"></span></a></li>
+                                                                  style="background: url('img/keys/degrees.png');"></span></a>
+            </li>
             <li><a class="key"><span>[</span></a></li>
             <li><a class="key"><span>]</span></a></li>
-            <li><a class="key space-key"><span class="key-span" style="background: url('img/keys/space%20bar.png');"></span></a>
+            <li><a class="key space-key"><span class="key-span"
+                                               style="background: url('img/keys/space%20bar.png');"></span></a>
             </li>
-            <li><a id="indexingDown-key" class="key"><span class="key-span" style="background: url('img/keys/x%201%202%203.png');"></span></a>
+            <li><a id="indexingDown-key" class="key"><span class="key-span"
+                                                           style="background: url('img/keys/x%201%202%203.png');"></span></a>
             </li>
             <li><a class="key return-key"><span class="key-span" style="background: url('img/keys/return.png');"></span></a>
             </li>
             <li><a class="key delete-key"><span class="key-span"
-                                                style="background: url('img/keys/delete%20backspace.png');"></span></a></li>
+                                                style="background: url('img/keys/delete%20backspace.png');"></span></a>
+            </li>
         </ul>
     </div>
 </div>
@@ -200,7 +200,12 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- PrefixFree -->
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/plugins/bootstrap.min.js"></script>
+<script src="js/operations.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/draw.js"></script>
+<script src="js/script.js"></script>
 <script src="js/calculator.js"></script>
-<script src="js/plugins/prefixfree-1.0.7.js" type="text/javascript"></script>
 </body>
 </html>
