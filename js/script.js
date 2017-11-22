@@ -10,15 +10,6 @@ $(document).ready(function () {
     //drawGraph();
 });
 
-function drawGraph() {
-    var quickplot = new QuickPlot(document.getElementById("canvas"));
-    quickplot.setFunction(function (x) {
-        return Math.pow(x, 2)
-    });
-    quickplot.setGraphDomain(-2, 2);
-    quickplot.setGraphRange(-1, 3);
-    quickplot.drawGraph();
-}
 
 function toggleAlphabeticKeyboard() {
 
@@ -63,9 +54,9 @@ function addScrollButtonsBehavior() {
 }
 
 function addSelectionButtonBehavior() {
-    $("#selection").click(function () {
+    $("#select-btn").click(function () {
         if (multiSelect) {
-            $("#selection span").css('color', 'rgb(153, 1, 0)');
+            $("#select-btn span").css('color', 'rgb(153, 1, 0)');
             multiSelect = false;
             for (var i = 0; i < selectedCells.length; i++) {
                 var cell = selectedCells[i];
@@ -73,7 +64,7 @@ function addSelectionButtonBehavior() {
             }
             selectedCells = [];
         } else {
-            $("#selection span").css('color', 'black');
+            $("#select-btn span").css('color', 'black');
             multiSelect = true;
 
         }
