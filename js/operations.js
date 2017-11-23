@@ -1,19 +1,24 @@
 var Operations = function () {
 
   const EMPTY_STRING = "";
-  let content = "";
+  let contents = [];
+
+  function prepareContents(s) {
+    contents = contents.concat(Array.isArray(s) ? s : [s]);
+  }
 
   function copy(s) {
-    content = s.html();
+    prepareContents(s);
+    contents.map((c, i) => s[i].html());
   }
 
   function cut(s) {
     copy(s);
-    s.html(EMPTY_STRING);
+    s.map(e => e.html(EMPTY_STRING));
   }
 
   function paste(t) {
-    t.html(content);
+    t.map((e, i) => e.html(contents[i]));
   }
 
   return {
