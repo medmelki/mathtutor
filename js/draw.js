@@ -210,6 +210,7 @@ function addIndexingKeysClickBehavior() {
       element.html(`<span class='root-span'>&radic;<\/span><\/a>`);
       copyKeyToSelectedCell(element[0]);
     } else {
+      // TODO : make it use Selection.selected & forEach to support multi selection strategy
       getCurrentCell().removeClass('rooted-cell');
     }
   });
@@ -226,6 +227,7 @@ function addIndexingKeysClickBehavior() {
     if (divisionMode) {
       copyKeyToSelectedCell(this);
     } else {
+      // TODO : make it use Selection.selected & forEach to support multi selection strategy
       getCurrentCell().removeClass('divided-cell');
     }
   });
@@ -271,12 +273,15 @@ function addTopBarButtonsClickBehavior() {
   };
 
   $(retrieveTopBarButton(CUT_BTN_INDEX)).click(function () {
-    Operations.cut(getCurrentCell());
+    Operations.cut(Selection.getSelected());
   });
-  $(retrieveTopBarButton(PASTE_BTN_INDEX)).click(function () {
-    Operations.paste(getCurrentCell());
-  });
+
   $(retrieveTopBarButton(COPY_BTN_INDEX)).click(function () {
-    Operations.copy(getCurrentCell());
+    Operations.copy(Selection.getSelected());
+  });
+
+  $(retrieveTopBarButton(PASTE_BTN_INDEX)).click(function () {
+    let target = Selection.getSelected()[0];
+    Operations.paste(target, Selection.getNext);
   });
 }

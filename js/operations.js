@@ -3,13 +3,10 @@ var Operations = function () {
   const EMPTY_STRING = "";
   let contents = [];
 
-  function prepareContents(s) {
-    contents = contents.concat(Array.isArray(s) ? s : [s]);
-  }
-
   function copy(s) {
-    prepareContents(s);
-    contents.map((c, i) => s[i].html());
+    for (let i = 0; i < s.length; i++) {
+      contents.push(s[i].html());
+    }
   }
 
   function cut(s) {
@@ -17,8 +14,12 @@ var Operations = function () {
     s.map(e => e.html(EMPTY_STRING));
   }
 
-  function paste(t) {
-    t.map((e, i) => e.html(contents[i]));
+  function paste(target, next) {
+    for (let i = 0; i < contents.length; i++) {
+      const content = contents[i];
+      target.html(content);
+      target = next(target);
+    }
   }
 
   return {
