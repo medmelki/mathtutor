@@ -19,6 +19,7 @@ function addCellClickBehavior() {
   });
 }
 
+// TODO : to delete
 function deleteSelectedCell() {
   if (selectedCell) {
     selectedCell.html("");
@@ -134,7 +135,8 @@ function addSpecialKeysClickBehavior() {
 
   // delete key
   $(specialKeys[0]).click(function () {
-    deleteSelectedCell();
+    // TODO : Pass previous selected cell function from Selection util and delete from draw.js
+    Operations.remove(Selection.getSelected());
   });
   // return key
   $(specialKeys[1]).click(function () {

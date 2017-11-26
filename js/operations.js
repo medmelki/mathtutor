@@ -3,6 +3,11 @@ var Operations = function () {
   const EMPTY_STRING = "";
   let contents = [];
 
+  function remove(s) {
+    s.map(e => e.html(EMPTY_STRING).removeClass("cell-selected filled-cell rooted-cell divided-cell"));
+    flagCell(getPreviousFilledCell());
+  }
+
   function copy(s) {
     for (let i = 0; i < s.length; i++) {
       contents.push(s[i].html());
@@ -11,7 +16,7 @@ var Operations = function () {
 
   function cut(s) {
     copy(s);
-    s.map(e => e.html(EMPTY_STRING));
+    remove(s);
   }
 
   function paste(target, next) {
@@ -23,6 +28,7 @@ var Operations = function () {
   }
 
   return {
+    remove: remove,
     copy: copy,
     cut: cut,
     paste: paste
