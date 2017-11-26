@@ -81,6 +81,7 @@ function getCurrentCell() {
   }
 }
 
+// TODO : delete and replace with getNextCell
 function getNextCell() {
   return selectedCell.next("td.cell");
 }
@@ -94,3 +95,33 @@ function isIndexingMode(previousFilledCell) {
   }
   return false;
 }
+
+var Selection = function () {
+  let selected = [];
+
+  function reinitParams() {
+    selected = [];
+  }
+
+  function nextCell(target) {
+    return target.next("td.cell");
+  }
+
+  function prepareSelection() {
+    reinitParams();
+    if (multiSelect)
+      selected = selectedCells;
+    else
+      selected.push(selectedCell);
+  }
+
+  function getSelected() {
+    prepareSelection();
+    return selected;
+  }
+
+  return {
+    getSelected: getSelected,
+    getNext: nextCell
+  }
+}();
