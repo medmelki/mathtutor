@@ -34,11 +34,7 @@ function toggleAlphabeticKeyboard() {
     $("div.keyboard-right ul.qwerty").append(special_keys_content);
   }
   $("ul.qwerty li a").unbind("click");
-  $("ul.qwerty li a").click(function () {
-    CommandManager.execute(new AddCommand(this));
-  });
-  addSpecialKeysClickBehavior();
-
+  addKeysClickBehavior();
 }
 
 function addScrollButtonsBehavior() {
