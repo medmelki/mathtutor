@@ -87,7 +87,7 @@ function getCurrentCell() {
   }
 }
 
-// TODO : delete and replace with getNextCell
+// TODO : delete and replace with nextCell from Selection Util
 function getNextCell() {
   return selectedCell.next("td.cell");
 }

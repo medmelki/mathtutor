@@ -8,6 +8,7 @@ var Operations = function () {
   }
 
   function remove(s) {
+    // TODO : Support indexing mode
     s.map(e => e.html(EMPTY_STRING).removeClass("cell-selected filled-cell rooted-cell divided-cell"));
     flagCell(getPreviousFilledCell());
   }
