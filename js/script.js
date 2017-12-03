@@ -35,7 +35,7 @@ function toggleAlphabeticKeyboard() {
   }
   $("ul.qwerty li a").unbind("click");
   $("ul.qwerty li a").click(function () {
-    copyKeyToSelectedCell(this);
+    CommandManager.execute(new AddCommand(this));
   });
   addSpecialKeysClickBehavior();
 

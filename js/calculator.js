@@ -92,7 +92,7 @@ $('span.copyTo').click(function () {
     var content = "<a class='key'><span>$key</span></a>";
 
     for (var i = 0, len = str.length; i < len; i++) {
-        copyKeyToSelectedCell(content.replace("$key", str[i]));
+      CommandManager.execute(new AddCommand(content.replace("$key", str[i])));
     }
 
     $('#calcModal').modal("hide");

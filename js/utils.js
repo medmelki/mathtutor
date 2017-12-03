@@ -2,6 +2,8 @@ const CELL_SIDE = 62;
 
 var selectedCell;
 
+var CommandManager = new CommandManager();
+
 var multiSelect = false;
 var rootMode = false;
 var divisionMode = false;
@@ -47,6 +49,10 @@ function drawGrid(w, h) {
 
 }
 
+/**
+ *
+ * @param cell : jquery DOM element
+ */
 function flagCell(cell) {
 
   if (multiSelect) {

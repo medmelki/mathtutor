@@ -46,41 +46,6 @@ function addSpaceCell() {
   }
 }
 
-function copyKeyToSelectedCell(element) {
-  if (selectedCell) {
-    if (fractionMode) {
-      if (fractionUp) {
-        if (!selectedCell.hasClass("fraction-cell"))
-          selectedCell.html(`<span>${$(element).text()}</span>&frasl;<sub></sub>`).addClass("fraction-cell");
-        else
-          selectedCell.html(
-            selectedCell.html()
-              .replace(/<span>(.*)<\/span>/,
-                `<span>$1${$(element).text()}</span>`));
-      } else {
-        selectedCell.html(
-          selectedCell.html()
-            .replace(/<sub>(.*)<\/sub>/,
-              `<sub>$1${$(element).text()}</sub>`));
-      }
-    } else {
-      selectedCell.html($(element).clone().addClass("key-cloned"));
-      selectedCell.addClass("filled-cell");
-
-      let nextCell = getNextCell();
-      if (getNextCell()) {
-        flagCell(nextCell);
-        if (rootMode) {
-          nextCell.addClass('rooted-cell');
-        }
-        if (divisionMode) {
-          nextCell.addClass('divided-cell');
-        }
-      }
-    }
-  }
-}
-
 function addKeysClickBehavior() {
 
   const $allKeys = $('ul.qwerty li a');
@@ -122,7 +87,7 @@ function addNormalKeysClickBehavior($allKeys) {
           )
       );
     } else {
-      copyKeyToSelectedCell(this);
+      CommandManager.execute(new AddCommand(this));
     }
   });
 }
@@ -136,7 +101,8 @@ function addSpecialKeysClickBehavior() {
   // delete key
   $(specialKeys[0]).click(function () {
     // TODO : Pass previous selected cell function from Selection util and delete from draw.js
-    Operations.remove(Selection.getSelected());
+    let targets = Selection.getSelected();
+    CommandManager.execute(new RemoveCommand(targets));
   });
   // return key
   $(specialKeys[1]).click(function () {
@@ -210,7 +176,7 @@ function addIndexingKeysClickBehavior() {
     if (rootMode) {
       let element = $(this).clone();
       element.html(`<span class='root-span'>&radic;<\/span><\/a>`);
-      copyKeyToSelectedCell(element[0]);
+      CommandManager.execute(new AddCommand(element[0]));
     } else {
       // TODO : make it use Selection.selected & forEach to support multi selection strategy
       getCurrentCell().removeClass('rooted-cell');
@@ -227,7 +193,7 @@ function addIndexingKeysClickBehavior() {
   $(specialKeys[7]).click(function () {
     divisionMode = !divisionMode;
     if (divisionMode) {
-      copyKeyToSelectedCell(this);
+      CommandManager.execute(new AddCommand(this));
     } else {
       // TODO : make it use Selection.selected & forEach to support multi selection strategy
       getCurrentCell().removeClass('divided-cell');
@@ -270,20 +236,31 @@ function addTopBarButtonsClickBehavior() {
   let topBarOperations = ['new', 'open', 'save', 'saveas',
     'cut', 'copy', 'select', 'paste', 'undo', 'redo', 'print'];
 
+  // TODO : refactor to DOMUtils
   let retrieveTopBarButton = function (index) {
     return "#".concat(topBarOperations[index]).concat("-btn");
   };
 
   $(retrieveTopBarButton(CUT_BTN_INDEX)).click(function () {
-    Operations.cut(Selection.getSelected());
+    let targets = Selection.getSelected();
+    CommandManager.execute(new CutCommand(targets));
   });
 
   $(retrieveTopBarButton(COPY_BTN_INDEX)).click(function () {
-    Operations.copy(Selection.getSelected());
+    let targets = Selection.getSelected();
+    CommandManager.execute(new CopyCommand(targets));
   });
 
   $(retrieveTopBarButton(PASTE_BTN_INDEX)).click(function () {
     let target = Selection.getSelected()[0];
-    Operations.paste(target, Selection.getNext);
+    CommandManager.execute(new PasteCommand(target, Selection.getNext));
+  });
+
+  $(retrieveTopBarButton(UNDO_BTN_INDEX)).click(function () {
+    CommandManager.undo();
+  });
+
+  $(retrieveTopBarButton(REDO_BTN_INDEX)).click(function () {
+    CommandManager.redo();
   });
 }
