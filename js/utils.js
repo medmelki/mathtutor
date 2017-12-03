@@ -11,6 +11,12 @@ var fractionMode = false;
 var fractionUp = true;
 var fractionDown = false;
 
+var indexingUpLeftMode = false;
+var indexingUpRightMode = false;
+var indexingUpDownMode = false;
+
+var indexingRootMode = false;
+
 var selectedCells = [];
 
 var columnsNumber = 0;

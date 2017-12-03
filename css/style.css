@@ -208,3 +208,9 @@ sub {
     font-size: 40px;
     top: 12px;
 }
+
+#select-btn:active, #select-btn:visited, #select-btn:focus {
+    background: #9c89f6;
+    box-shadow: 0px 4px #6b54d3;
+    color: white;
+}

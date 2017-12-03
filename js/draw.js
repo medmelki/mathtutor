@@ -121,6 +121,21 @@ function addIndexingKeysClickBehavior() {
     $(v).unbind("click");
   });
 
+  function updateStyle(index, test) {
+    $(specialKeys[index]).css({
+      'background': test ? '#a696ff' : 'white',
+      'box-shadow': test ? '0px 4px #6b54d3' : 'none'
+    });
+  }
+
+  function updateFractionStyle() {
+    $("#fractions-span").css({
+      'background': fractionMode ?
+        (fractionUp ? 'url(\'img/keys/fractionUp.png\')' : 'url(\'img/keys/fractionDown.png\')')
+        : 'url(\'img/keys/fraction.png\')',
+    });
+  }
+
   // repeater key
   $(specialKeys[0]).click(function () {
     let previousFilledCell = getPreviousFilledCell();
@@ -129,7 +144,7 @@ function addIndexingKeysClickBehavior() {
         previousFilledCell.html()
           .replace(
             /<span>(.*)<\/span>/,
-            '<span>$1<sup>.</sup><\/span>'
+            `<span>$1<sup style="font-size: 50px;top: -.5em;">.</sup><\/span>`
           )
       );
       previousFilledCell.data("repeaterApplied", true);
@@ -153,6 +168,8 @@ function addIndexingKeysClickBehavior() {
 
   // indexingUpRightkey
   $(specialKeys[2]).click(function () {
+    indexingUpRightMode = !indexingUpRightMode;
+    updateStyle(2, indexingUpRightMode);
     let previousFilledCell = getPreviousFilledCell();
     // toggle indexing mode for keyboards
     previousFilledCell.data("indexingUpRightApplied", !previousFilledCell.data("indexingUpRightApplied"));
@@ -160,12 +177,16 @@ function addIndexingKeysClickBehavior() {
 
   // indexingUpLeft key
   $(specialKeys[3]).click(function () {
+    indexingUpLeftMode = !indexingUpLeftMode;
+    updateStyle(3, indexingUpLeftMode);
     let previousFilledCell = getPreviousFilledCell();
     previousFilledCell.data("indexingUpLeftApplied", !previousFilledCell.data("indexingUpLeftApplied"));
   });
 
   // indexingDown key
   $(specialKeys[4]).click(function () {
+    indexingUpDownMode = !indexingUpDownMode;
+    updateStyle(4, indexingUpDownMode);
     let previousFilledCell = getPreviousFilledCell();
     previousFilledCell.data("indexingDownApplied", !previousFilledCell.data("indexingDownApplied"));
   });
@@ -173,6 +194,7 @@ function addIndexingKeysClickBehavior() {
   // squareRoot key
   $(specialKeys[5]).click(function () {
     rootMode = !rootMode;
+    // updateStyle(5, rootMode);
     if (rootMode) {
       let element = $(this).clone();
       element.html(`<span class='root-span'>&radic;<\/span><\/a>`);
@@ -183,8 +205,10 @@ function addIndexingKeysClickBehavior() {
     }
   });
 
-  // rootIndexing key
+  // indexingRoot key
   $(specialKeys[6]).click(function () {
+    indexingRootMode = !indexingRootMode;
+    updateStyle(6, indexingRootMode);
     let previousFilledCell = getPreviousFilledCell();
     previousFilledCell.data("rootIndexingApplied", !previousFilledCell.data("rootIndexingApplied"));
   });
@@ -192,6 +216,7 @@ function addIndexingKeysClickBehavior() {
   // longDivision key
   $(specialKeys[7]).click(function () {
     divisionMode = !divisionMode;
+    // updateStyle(7, divisionMode);
     if (divisionMode) {
       CommandManager.execute(new AddCommand(this));
     } else {
@@ -215,8 +240,8 @@ function addIndexingKeysClickBehavior() {
         fractionMode = false;
         flagCell(getNextCell());
       }
-      // copyKeyToSelectedCell(this);
     }
+    updateFractionStyle();
   });
 }
 
