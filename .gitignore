@@ -1,4 +1,6 @@
 node_modules
 
 *.iml
-.idea/*.xml
+.idea
+.history
+eye-gaze-app_achievement.txt
